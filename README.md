@@ -1,7 +1,7 @@
 
-<p><h3>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</h3> </P>
+<p><h3>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</h3> </P>
 <p><h3><img src="https://media.tenor.com/5Y3pODSSv6IAAAAC/fiesta-maracas.gif" width="50" height="50"  /> <b>⭐⭐Bienvenidos al Grupo de Desarrollo PSIAPP⭐⭐</b> <img src="https://media.tenor.com/Y-SWmQ_IJKQAAAAC/mega-man-megaman-accords.gif" width="50" height="50"  /></h3></P>
-<p><h3>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</h3> </P>
+<p><h3>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</h3> </P>
 💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠 </P>
 ▶ <b>Apellido y Nombres de Estudiantes</b>:
 <p><b> 1) </b>Díaz, Priscila Nahir </P>
