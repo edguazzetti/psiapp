@@ -1,11 +1,13 @@
 <img src="https://i.pinimg.com/originals/57/18/5d/57185d2176d7cbaebdb74c00ce1b9ebf.gif" width="100" height="100" />
-<img src="https://media.tenor.com/UI52Xy7anWIAAAAi/tany.gif" width="400" />
-<img src="https://media.tenor.com/Y-SWmQ_IJKQAAAAC/mega-man-megaman-accords.gif" width="100" height="100"  />
-<img src="https://media.tenor.com/5Y3pODSSv6IAAAAC/fiesta-maracas.gif" width="100" height="100"  />
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 ⭐⭐⭐⭐Bienbenidos al grupo de desarrollo PSIAPP⭐⭐⭐⭐
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
+
+<img src="https://media.tenor.com/Y-SWmQ_IJKQAAAAC/mega-man-megaman-accords.gif" width="100" height="100"  />
+<img src="https://media.tenor.com/5Y3pODSSv6IAAAAC/fiesta-maracas.gif" width="100" height="100"  />
+
+<img src="https://media.tenor.com/UI52Xy7anWIAAAAi/tany.gif" width="400" />
 
 ▶ Apellido y Nombres de Estudiantes:
 1. Díaz, Priscila Nahir
