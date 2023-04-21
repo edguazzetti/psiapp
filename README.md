@@ -23,9 +23,9 @@
 
 La plataforma tiene 3 tipos de acceso: 
 
-1)Administrador del sitio.
-2)Profesionales matriculados que prestarán el servicio.
-3)Pacientes que serán los abonados/clientes.
+<p> 1) Administrador del sitio. </P>
+<p> 2) Profesionales matriculados que prestarán el servicio. </P>
+<p> 3) Pacientes que serán los abonados/clientes. </P>
    
 Los psicólogos se registran pasando por un proceso de validación que acredite su identidad y profesión.
 
