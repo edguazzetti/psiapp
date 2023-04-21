@@ -2,7 +2,7 @@
 <p>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </P>
 <p><img src="https://media.tenor.com/5Y3pODSSv6IAAAAC/fiesta-maracas.gif" width="50" height="50"  />  ⭐⭐Bienvenidos al grupo de desarrollo PSIAPP⭐⭐ <img src="https://media.tenor.com/Y-SWmQ_IJKQAAAAC/mega-man-megaman-accords.gif" width="50" height="50"  /></P>
 <p>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </P>
-
+💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠
 ▶ <b>Apellido y Nombres de Estudiantes</b>:
 <p><b> 1) </b>Díaz, Priscila Nahir </P>
 <p><b> 2) </b>Fernandez, Claudio Ranses </P>
@@ -26,11 +26,5 @@ La plataforma tiene 3 tipos de acceso:
 <p> <b>3)</b> Pacientes que serán los abonados/clientes y tendran 3 opciones de planes adecuados a la cantidad de sesiones solicitadas (Realizaran su pago online 
 dentro del sitio) .  </P>
    
-
-
-
-
-
-
 💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠
 
