@@ -1,5 +1,13 @@
+<img src="https://i.pinimg.com/originals/57/18/5d/57185d2176d7cbaebdb74c00ce1b9ebf.gif" width="100" height="100" />
+<img src="https://media.tenor.com/UI52Xy7anWIAAAAi/tany.gif" width="400" />
+<img src="https://media.tenor.com/Y-SWmQ_IJKQAAAAC/mega-man-megaman-accords.gif" width="100" height="100"  />
+<img src="https://media.tenor.com/5Y3pODSSv6IAAAAC/fiesta-maracas.gif" width="100" height="100"  />
 
-Apellido y Nombres de Estudiantes:
+⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
+⭐⭐⭐⭐Bienbenidos al grupo de desarrollo PSIAPP⭐⭐⭐⭐
+⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
+
+▶ Apellido y Nombres de Estudiantes:
 1. Díaz, Priscila Nahir
 2. Fernandez, Claudio Ranses
 3. Guazzetti, Emiliano
@@ -8,14 +16,15 @@ Apellido y Nombres de Estudiantes:
 6. Teruel Schenfeld, Priscila Johanna
 
 
-*Nombre del proyecto: PSIAPP
+▶ Nombre del proyecto: PSIAPP
 
-*Breve descripción del proyecto: Es un sitio web para sacar online turnos de Psicología. 
+▶ Breve descripción del proyecto: Es un sitio web para sacar online turnos de Psicología. 
 
 La plataforma tiene 3 tipos de acceso: 
 
 1)administrador del sitio, 
-2)Profesionales matriculados que prestarán el servicio y 3)Pacientes que serán los abonados/clientes.
+2)Profesionales matriculados que prestarán el servicio 
+3)Pacientes que serán los abonados/clientes.
    
 Los psicólogos se registran pasando por un proceso de validación que acredite su identidad y profesión.
 
