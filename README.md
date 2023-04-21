@@ -24,7 +24,7 @@ La plataforma tiene 3 tipos de acceso:
 <p> <b>1)</b> Administrador del sitio. </P>
 <p> <b>2)</b> Profesionales matriculados que prestarán el servicio, los cuales se registrarán pasando por un proceso de validación que acredite su identidad y profesión. Cada Psicólogo será calificado con reseñas y estas serán visibles al momento de crear una cita con el mismo.</P>
 <p> <b>3)</b> Pacientes que serán los abonados/clientes y tendran 3 opciones de planes adecuados a la cantidad de sesiones solicitadas (Realizaran su pago online 
-dentro del sitio) .  </P>
+dentro del sitio).  </P>
    
 💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠
 
