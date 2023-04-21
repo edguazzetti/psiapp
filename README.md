@@ -4,12 +4,12 @@
 <p>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </P>
 
 ▶ <b>Apellido y Nombres de Estudiantes</b>:
-1. Díaz, Priscila Nahir
-2. Fernandez, Claudio Ranses
-3. Guazzetti, Emiliano
-4. Seligmann, Gabriela
-5. Tapia Natalia Noemí
-6. Teruel Schenfeld, Priscila Johanna
+<p><b> 1) </b>Díaz, Priscila Nahir </P>
+<p><b> 2) </b>Fernandez, Claudio Ranses </P>
+<p><b> 3) </b>Guazzetti, Emiliano </P>
+<p><b> 4) </b>Seligmann, Gabriela </P>
+<p><b> 5) </b>Tapia Natalia Noemí </P>
+<p><b> 6) </b>Teruel Schenfeld, Priscila Johanna </P>
 
 💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠
 
