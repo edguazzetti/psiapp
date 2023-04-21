@@ -1,6 +1,6 @@
 
 <p>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </P>
-<p><img src="https://media.tenor.com/5Y3pODSSv6IAAAAC/fiesta-maracas.gif" width="50" height="50"  />  ⭐⭐Bienvenidos al grupo de desarrollo PSIAPP⭐⭐ <img src="https://media.tenor.com/Y-SWmQ_IJKQAAAAC/mega-man-megaman-accords.gif" width="50" height="50"  /></P>
+<p><img src="https://media.tenor.com/5Y3pODSSv6IAAAAC/fiesta-maracas.gif" width="50" height="50"  /> ⭐⭐Bienvenidos al grupo de desarrollo PSIAPP⭐⭐ <img src="https://media.tenor.com/Y-SWmQ_IJKQAAAAC/mega-man-megaman-accords.gif" width="50" height="50"  /></P>
 <p>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ </P>
 💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠💠 </P>
 ▶ <b>Apellido y Nombres de Estudiantes</b>:
