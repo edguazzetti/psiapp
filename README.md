@@ -1,7 +1,7 @@
 <div 
 
 <img src="https://i.pinimg.com/originals/57/18/5d/57185d2176d7cbaebdb74c00ce1b9ebf.gif" width="50" height="50" />
-
+<p stile
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 ⭐Bienbenidos al grupo de desarrollo PSIAPP⭐
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
@@ -26,8 +26,8 @@
 
 La plataforma tiene 3 tipos de acceso: 
 
-1)administrador del sitio, 
-2)Profesionales matriculados que prestarán el servicio 
+1)Administrador del sitio.
+2)Profesionales matriculados que prestarán el servicio.
 3)Pacientes que serán los abonados/clientes.
    
 Los psicólogos se registran pasando por un proceso de validación que acredite su identidad y profesión.
