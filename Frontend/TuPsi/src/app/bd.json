@@ -1,0 +1,22 @@
+{
+    "psicologos": [
+        {
+            "nombre": "Julia",
+            "apellido": "Gómez",
+            "tipo de terapia": "Pareja",
+            "correo electronico": "jgomez@gmail.com",
+            "provincia": "Buenos Aires",
+            "Localidad": "Lanus",
+            "matricula": "155442"
+        },
+        {
+            "nombre": "Pedro",
+            "apellido": "López",
+            "tipo de terapia": "Familia",
+            "correo electronico": "plopez@gmail.com",
+            "provincia": "Córdoba",
+            "Localidad": "Carlos Paz",
+            "matricula": "566554"
+        }
+    ]
+}
