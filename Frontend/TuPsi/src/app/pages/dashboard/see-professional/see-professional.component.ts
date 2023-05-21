@@ -15,6 +15,7 @@ export class SeeProfessionalComponent implements OnInit, OnDestroy {
   //lista de profesionales (que en este caso tiene un solo profesional)
   profesionales: Professional[] = [
     {
+
         nombre: "Julia",
         apellido: "Gómez",
         tipo-de-terapia: "Pareja",
@@ -25,8 +26,8 @@ export class SeeProfessionalComponent implements OnInit, OnDestroy {
     }
   ]
 
- 
-  
+
+
   //? en el constructor inyectamos el servicio que creamos (profesional service)
   constructor(private professionalService: ProfessionalService){}
 
@@ -36,15 +37,15 @@ export class SeeProfessionalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-      
+
   }
 
-  //?  creamos el metodo para ver los profesionales 
+  //?  creamos el metodo para ver los profesionales
   seeProfessionals() {
     this.professionalService.getAllprofessionals().subscribe(
       (data) => {
         console.info(data);
-        
+
         for (let i = 0; i < data.length; i++) {
           const e = data[i];
           this.profesionales.push(e)
@@ -52,7 +53,7 @@ export class SeeProfessionalComponent implements OnInit, OnDestroy {
       },
       (error) => {
         console.log(error);
-        
+
       }
     )
   }

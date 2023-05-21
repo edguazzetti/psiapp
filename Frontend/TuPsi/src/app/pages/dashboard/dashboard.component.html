@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="sidebar">
+      <div class="sidebar-content bg-primary bg-opacity-75">
+          <div class="sidebar-title">
+              <h2>Menu</h2>
+          </div>
+          <div class="sidebar-items">
+              <div class="menu-item bg-white" *ngFor="let item of menuItems" (click)="navigateTo(item.route)">
+                  <div class="icon"><img [src]="item.iconUrl" alt=""></div>
+                  <div class="mi-title">{{item.title}}</div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="content bg-primary bg-opacity-75 p-4">
+      <router-outlet></router-outlet>
+  </div>
+</div>
