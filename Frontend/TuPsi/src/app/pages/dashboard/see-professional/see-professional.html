@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 bg-light bg-opacity-25 p-2 border-1">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">tipo-de-terapia</th>
+                    <th scope="col">correo-electronico</th>
+                    <th scope="col">pronvincia</th>
+                    <th scope="col">localidad/th>
+                    <th scope="col">matricula</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- agregamos un ngFor para desplegar  -->
+                  <tr class="table-light" *ngFor="let item of profesionales">
+                    <th scope="row">123</th>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.tipo-de-terapia}}</td>
+                    <td>{{item.correo-electronico}}</td>
+                    <td>{{item.pronvincia}}</td>
+                    <td>{{item.localidad}}</td>
+                    <td>{{item.matricula}}</td>
+                    <td>
+                        <button type="button" class="btn btn-secondary mx-1">Editar</button>
+                        <button type="button" class="btn btn-danger mx-1">Borrar</button>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
