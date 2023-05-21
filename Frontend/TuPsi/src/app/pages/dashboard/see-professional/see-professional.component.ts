@@ -15,7 +15,7 @@ export class SeeProfessionalComponent implements OnInit, OnDestroy {
   //lista de profesionales (que en este caso tiene un solo profesional)
   profesionales: Professional[] = [
     {
-
+/*
         nombre: "Julia",
         apellido: "Gómez",
         tipo-de-terapia: "Pareja",
@@ -23,6 +23,7 @@ export class SeeProfessionalComponent implements OnInit, OnDestroy {
         provincia: "Buenos Aires",
         Localidad: "Lanus",
         matricula: "155442"
+*/
     }
   ]
 
