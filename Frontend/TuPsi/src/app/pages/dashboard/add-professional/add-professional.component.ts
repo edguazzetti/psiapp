@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 //? importaciones necesarias
-import { FormGroup, FormControl, Validators } from '@angular/forms' // buscar info sobre formularios reactivos
-import { Professional } from '../models/professional.model'
-import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormControl, Validators } from '@angular/forms'; // buscar info sobre formularios reactivos
+import { Professional } from '../models/professional.model';
+import { ToastrService } from 'ngx-toastr'; // tiene error y nose porqué
 
 //? importamos el servicio que creamos
 import { ProfessionalService } from '../services/professional.service';
@@ -18,13 +18,16 @@ export class AddProfessionalComponent implements OnInit {
   pFormGr!: FormGroup;
 
 
-  constructor( private toast: ToastrService, private professionalService: ProfessionalService) {}
+  constructor( private Toastr: ToastrService, private professionalService: ProfessionalService) {}
 
   ngOnInit() {
     this.pFormGr = new FormGroup({
       nombre:     new FormControl(''),
-      telefono:   new FormControl(''),
-      email:      new FormControl(''),
+      apellido:     new FormControl(''),
+      tipodeterapia:     new FormControl(''),
+      correoelectronico:   new FormControl(''),
+      pronvicia:      new FormControl(''),
+      localidad:     new FormControl(''),
       matricula:  new FormControl(''),
     })
   }
@@ -32,27 +35,30 @@ export class AddProfessionalComponent implements OnInit {
 
   crearProfesional(){
     const id: number = this.generateID()
-    const {nombre, telefono, email, matricula } = this.pFormGr.value
+    const {nombre, apellido, tipo_de_terapia, email, localidad, provincia, matricula } = this.pFormGr.value
 
     // console.log(this.pFormGr.value);
 
 
     const profesional: Professional = {
       nombre: nombre.toString(),
-      telefono: telefono.toString(),
-      email: email.toString(),
+      apellido: apellido.toString(),
+      tipo_de_terapia: tipo_de_terapia.toString(),
+      correo_electronico: email.toString(),
+      localidad: localidad.toString(),
+      provincia: provincia.toString(),
       numero_matricula: matricula.toString(),
-      status: true,
+      
     }
 
     this.professionalService.createProfessional(profesional).subscribe(
       data => {
-        this.toast.success('Profesional Creado', `Profesional creado bajo el nombre ${data.nombre}, id: ${data}`)
+        this.Toastr.success('Profesional Creado', `Profesional creado bajo el nombre ${data.nombre}, id: ${data}`)
       },
       error => {
         console.log(error);
 
-        this.toast.error('Hubo un error', error)
+        this.Toastr.error('Hubo un error', error)
       }
     )
 
