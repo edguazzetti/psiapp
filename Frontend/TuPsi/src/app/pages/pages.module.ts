@@ -11,6 +11,10 @@ import { SeeProfessionalComponent } from './dashboard/see-professional/see-profe
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminPacientesComponent } from './admin-pacientes/admin-pacientes.component';
+import { AdminProfesionalesComponent } from './admin-profesionales/admin-profesionales.component';
+import { AdminPlanesComponent } from './admin-planes/admin-planes.component';
+import { PlanesComponent } from './planes/planes.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     AddProfessionalComponent,
     SeeProfessionalComponent,
+    AdminPacientesComponent,
+    AdminProfesionalesComponent,
+    AdminPlanesComponent,
+    PlanesComponent,
     
   ],
   imports: [
