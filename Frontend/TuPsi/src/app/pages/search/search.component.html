@@ -1,107 +1,44 @@
-<h1 class="text-center m-lg-3 p-4">Buscar Profesional</h1>
+<div class="container" style="text-align: center;">
+  <h2 style="font-weight: lighter;">Buscar Profesional</h2>
+</div>
 
 <div class="container">
   <form class="row g-3 mt-3">
     <div class="col-6">
-      <label for="inputState" class="form-label text-primary"
-        >Tipo de terapia</label
-      >
-      <select id="inputState" class="form-select">
-        <option selected>Elegir...</option>
-        <option>Terapia Familiar</option>
-        <option>Terapia de pareja</option>
-        <option>Individual</option>
-        <option>Consultoría de empresas</option>
-        <option>Deportiva</option>
+      <label for="inputTerapia" class="form-label text-primary">Tipo de terapia</label>
+      <select id="inputTerapia" class="form-select" name="inputTerapia" [(ngModel)]="tipoTerapiaSeleccionada" (change)="filtrarProfesionales()">
+        <option value="">Elegir...</option>
+        <option *ngFor="let tipoTerapia of tiposTerapiaDisponibles">{{ tipoTerapia }}</option>
       </select>
     </div>
 
     <div class="col-6">
-      <label for="inputState" class="form-label text-primary">Provincia</label>
-      <select id="inputState" class="form-select">
-        <option selected>Elegir...</option>
-        <option>Buenos Aires</option>
-        <option>Ciudad Autónoma de Buenos Aires</option>
-        <option>Catamarca</option>
-        <option>Chaco</option>
-        <option>Chubut</option>
-        <option>Córdoba</option>
-        <option>Corrientes</option>
-        <option>Entre Ríos</option>
-        <option>Formosa</option>
-        <option>Jujuy</option>
-        <option>La Pampa</option>
-        <option>La Rioja</option>
-        <option>Mendoza</option>
-        <option>Misiones</option>
-        <option>Neuquén</option>
-        <option>Río Negro</option>
-        <option>Salta</option>
-        <option>San Juan</option>
-        <option>San Luis</option>
-        <option>Santa Cruz</option>
-        <option>Santa Fe</option>
-        <option>Tierra del Fuego, Antártida e Islas del Atlántico Sur</option>
-        <option>Tucuman</option>
+      <label for="inputProvincia" class="form-label text-primary">Provincia</label>
+      <select id="inputProvincia" class="form-select" name="inputProvincia" [(ngModel)]="provinciaSeleccionada" (change)="filtrarProfesionales()">
+        <option value="">Elegir...</option>
+        <option *ngFor="let provincia of provinciasDisponibles">{{ provincia }}</option>
       </select>
     </div>
 
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Buscar</button>
+      <button type="button" class="btn btn-primary" (click)="resetearFiltros()">Restablecer</button>
     </div>
   </form>
 </div>
-<div class="row">
-  <div class="col-lg-4">
-    <img
-      src="../../../assets/img/persona-soltera.png"
-      alt=""
-      class="bd-placeholder-img rounded-circle"
-      width="155"
-      height="140"
-    />
 
-    <h2 class="m-2">Maria S.</h2>
-    <p>
-      Psicologa especialista en Terapia Individual. <br />
-      Cordoba
-    </p>
-    <p><a class="btn btn-primary" href="#">Contactar &raquo;</a></p>
+<div class="row" style="margin-top: 2rem;margin-bottom: 5rem;">
+  <div class="col-lg-4" *ngFor="let profesional of profesionalesFiltrados; let i = index">
+    <!-- Aquí va la estructura de la card con los datos del profesional -->
+    <div class="card" [ngStyle]="getCardStyle(i)">
+      <div class="card-body">
+        <h5 class="card-title">{{ profesional.nombre }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ profesional.numero_matricula }}</h6>
+        <p class="card-text">{{ profesional.tipo_de_terapia }}</p>
+        <p class="card-text">Ubicación: {{ profesional.localidad }}</p>
+        <p class="card-text">Teléfono: {{ profesional.telefono }}</p>
+        <a href="#" class="card-link">Más información</a>
+        <a href="#" class="card-link">Contactar</a>
+      </div>
+    </div>
   </div>
-  <!-- /.col-lg-4 -->
-  <div class="col-lg-4">
-    <img
-      src="../../../assets/img/avatar.png"
-      alt=""
-      class="bd-placeholder-img rounded-circle"
-      width="140"
-      height="140"
-    />
-
-    <h2 class="m-2">Juan.T</h2>
-    <p>
-      Psicologo especialista en Terapia familar. <br />
-      Zona Oeste Buenos Aires
-    </p>
-    <p><a class="btn btn-primary" href="#">Contactar &raquo;</a></p>
-  </div>
-  <!-- /.col-lg-4 -->
-  <div class="col-lg-4">
-    <img
-      src="../../../assets/img/cara-feliz.png"
-      alt=""
-      class="bd-placeholder-img rounded-circle"
-      width="140"
-      height="140"
-    />
-
-    <h2 class="m-2">Lucas.C</h2>
-    <p>
-      Psicologo especialista en Terapia de Pareja. <br />
-      Zona Norte Buenos Aires
-    </p>
-    <p><a class="btn btn-primary" href="#">Contactar &raquo;</a></p>
-  </div>
-  <!-- /.col-lg-4 -->
 </div>
-<!-- /.row -->

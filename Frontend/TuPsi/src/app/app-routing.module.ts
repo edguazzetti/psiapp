@@ -4,26 +4,24 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignProfesionalComponent } from './auth/sign-profesional/sign-profesional.component';
-
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AddProfessionalComponent } from './pages/dashboard/add-professional/add-professional.component';
-import { SeeProfessionalComponent } from './pages/dashboard/see-professional/see-professional.component';
-
+import { AdminProfesionalesComponent } from './pages/admin-profesionales/admin-profesionales.component';
+import { AdminPacientesComponent } from './pages/admin-pacientes/admin-pacientes.component';
+import { AdminPlanesComponent } from './pages/admin-planes/admin-planes.component';
+import { SignPacienteComponent } from './auth/sign-paciente/sign-paciente.component';
+import { PlanesComponent } from './pages/planes/planes.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   { path: 'search', component: SearchComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'professional-register', component: SignProfesionalComponent },
+  { path: 'signProfesional', component: SignProfesionalComponent },
+  { path: 'AdminProfesionales', component: AdminProfesionalesComponent},
+  { path: 'AdminPacientes', component: AdminPacientesComponent},
+  { path: 'AdminPlanes', component: AdminPlanesComponent},
+  { path: 'signPaciente', component: SignPacienteComponent},
+  { path: 'planes', component: PlanesComponent}
 
-{
-  path: 'dashboard',
-  component: DashboardComponent,
-  children: [
-    {path: 'add-professional', component: AddProfessionalComponent},
-    {path: 'see-professional', component: SeeProfessionalComponent}
-  ]
-}
+
 ];
 
 @NgModule({
