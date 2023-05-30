@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import { Router } from '@angular/router'; 
-
-
-
-
 
 
 interface MenuItems {
@@ -42,7 +36,8 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-      this.navigateTo('dashboard/add-professional')
+      this.navigateTo('dashboard/add-professional'),
+      this.navigateTo('dashboard/see-professional')
   }
 
   

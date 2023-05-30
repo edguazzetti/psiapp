@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
 import { Professional } from '../models/professional.model';
 import { ProfessionalService } from '../services/professional.service';
 import { Subscription } from 'rxjs';
@@ -13,25 +12,18 @@ import { Subscription } from 'rxjs';
 export class SeeProfessionalComponent implements OnInit, OnDestroy {
 
   //lista de profesionales (que en este caso tiene un solo profesional)
- /* profesionales: Professional[] = [
+  profesionales: Professional[] = [
     {
-
         nombre: "Julia",
         apellido: "Gómez",
-        tipo-de-terapia: "Pareja",
-        correo-electronico: "jgomez@gmail.com",
+        telefono: "223223223",
+        tipo_de_terapia: "Pareja",
+        email: "jgomez@gmail.com",
         provincia: "Buenos Aires",
-        Localidad: "Lanus",
-        matricula: "155442"
-
+        localidad: "Lanus",
+        numero_matricula: "155442"
     }
-  ]*/
-electronico: any;
-terapia: any;
-de: any;
-  profesionales: any;
-
-
+  ]
 
   //? en el constructor inyectamos el servicio que creamos (profesional service)
   constructor(private professionalService: ProfessionalService){}
