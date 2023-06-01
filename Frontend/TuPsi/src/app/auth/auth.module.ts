@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { SignProfesionalComponent } from './sign-profesional/sign-profesional.component';
 import { SignPacienteComponent } from './sign-paciente/sign-paciente.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     LoginComponent,
