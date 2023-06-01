@@ -53,7 +53,7 @@ export class SignPacienteComponent implements OnInit {
         (response) => {
           console.log('Paciente registrado con éxito:', response);
           this.formPaciente.reset();
-          this.successMessage = 'Paciente creado con éxito.';
+          this.successMessage = 'Bienvenido';
           this.errorMessage = '';
         },
         (error) => {
