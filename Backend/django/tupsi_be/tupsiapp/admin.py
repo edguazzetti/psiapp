@@ -6,6 +6,14 @@ from .models import UsuarioPaciente
 from .models import Profesional
 from .models import Planes
 from .models import PagosSuscripciones
+from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin
+
+
+#para usar el custom user model (p/tener acceso al modelo para editar, crear, borrar usuarios desde admin)
+@admin.register(get_user_model())
+class CustomUserAdmin(UserAdmin):
+    pass
 
 # lo mismo que el comentario de models.py REVISAR
 class AdministradorAdmin(admin.ModelAdmin):

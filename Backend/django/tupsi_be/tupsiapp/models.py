@@ -1,4 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+
+#Abstract user 
+class CustomUser(AbstractUser):
+    email = models.EmailField(
+        max_length=120, unique=True
+    )
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'password']
+
 
 # Chequear si estan bien las clases y si concuerdan con el archivo sql del sprint anterior
 
