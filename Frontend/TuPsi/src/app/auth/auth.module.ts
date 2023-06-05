@@ -5,19 +5,22 @@ import { SignProfesionalComponent } from './sign-profesional/sign-profesional.co
 import { SignPacienteComponent } from './sign-paciente/sign-paciente.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     SignProfesionalComponent,
-    SignPacienteComponent
+    SignPacienteComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     LoginComponent,

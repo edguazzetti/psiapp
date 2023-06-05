@@ -17,6 +17,7 @@ export class SignProfesionalComponent implements OnInit {
 
   ngOnInit(): void {
     this.formProfesional = new FormGroup({
+      dni: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       sexo: new FormControl('', Validators.required),
@@ -33,9 +34,10 @@ export class SignProfesionalComponent implements OnInit {
   createProfesional() {
     if (this.formProfesional.valid) {
       const formValue = this.formProfesional.value;
-      const { nombre, apellido, sexo, telefono, tipo_de_terapia, email, clave, provincia, localidad, numero_matricula } = formValue;
+      const { dni, nombre, apellido, sexo, telefono, tipo_de_terapia, email, clave, provincia, localidad, numero_matricula } = formValue;
 
       const profesional: Profesional = {
+        dni: dni.toString(),
         nombre: nombre.toString(),
         apellido: apellido.toString(),
         sexo: sexo.toString(),

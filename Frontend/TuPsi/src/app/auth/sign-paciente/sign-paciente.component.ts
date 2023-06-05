@@ -18,6 +18,7 @@ export class SignPacienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.formPaciente = new FormGroup({
+      dni: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       sexo: new FormControl('', Validators.required),
@@ -34,9 +35,10 @@ export class SignPacienteComponent implements OnInit {
   createPaciente() {
     if (this.formPaciente.valid) {
       const formValue = this.formPaciente.value;
-      const { nombre, apellido, sexo, telefono, terapia, email, clave, provincia, localidad} = formValue;
+      const { dni,nombre, apellido, sexo, telefono, terapia, email, clave, provincia, localidad} = formValue;
 
       const paciente: Paciente = {
+        dni: dni.toString(),
         nombre: nombre.toString(),
         apellido: apellido.toString(),
         sexo: sexo.toString(),

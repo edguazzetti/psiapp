@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PacienteService {
-  apiURL: string = 'http://localhost:3000/pacientes';
+  apiURL: string = 'http://127.0.0.1:8000/api/auth/singup/';
   private pacienteCreadoSubject: Subject<Paciente> = new Subject<Paciente>();
 
   constructor(private http: HttpClient) {}

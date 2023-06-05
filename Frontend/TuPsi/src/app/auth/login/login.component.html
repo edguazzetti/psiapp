@@ -1,116 +1,14 @@
-<title>Inicio Sesion Ψ</title>
-<body
-  class="bg-primary d-flex justify-content-center align-items-center vh-100"
->
-  <div
-    class="bg-white p-5 rounded-5 text-secondary shadow"
-    style="width: 25rem"
-  >
-    <div class="d-flex justify-content-center">
-      <img
-        src="../../../assets/img/cuenta.png"
-        alt="login-icon"
-        style="height: 7rem"
-      />
-    </div>
-
-    <div class="text-center fs-1 fw-bold text-primary">Login</div>
-
-    <form [formGroup]="formLogin" (ngSubmit)="createLogin()">
-      <div class="input-group mt-4">
-        <div class="input-group-text"></div>
-        <input
-          class="form-control bg-light"
-          type="text"
-          placeholder="Email"
-          formControlName="email"
-          required
-          [ngClass]="{
-            'is-invalid':
-              formLogin.controls['email'].invalid &&
-              (formLogin.controls['email'].dirty ||
-                formLogin.controls['email'].touched),
-            'is-valid':
-              formLogin.controls['email'].valid &&
-              (formLogin.controls['email'].dirty ||
-                formLogin.controls['email'].touched)
-          }"
-        />
-      </div>
-      <div
-        *ngIf="formLogin.controls['email'].errors?.['required'] && (formLogin.controls['email'].dirty || formLogin.controls['email'].touched)"
-        class="text-danger mt-2"
-      >
-        <div class="border border-danger p-2">El email es requerido</div>
-      </div>
-      <div
-        *ngIf="formLogin.controls['email'].errors?.['email'] && (formLogin.controls['email'].dirty || formLogin.controls['email'].touched)"
-        class="text-danger mt-2"
-      >
-        <div class="border border-danger p-2">El email no es válido</div>
-      </div>
-
-      <div class="input-group mt-1">
-        <div class="input-group-text"></div>
-        <input
-          class="form-control bg-light"
-          type="password"
-          placeholder="Contraseña"
-          formControlName="password"
-          required
-          [ngClass]="{
-            'is-invalid':
-              formLogin.controls['password'].invalid &&
-              (formLogin.controls['password'].dirty ||
-                formLogin.controls['password'].touched),
-            'is-valid':
-              formLogin.controls['password'].valid &&
-              (formLogin.controls['password'].dirty ||
-                formLogin.controls['password'].touched)
-          }"
-        />
-      </div>
-      <div
-        *ngIf="formLogin.controls['password'].errors?.['required'] && (formLogin.controls['password'].dirty || formLogin.controls['password'].touched)"
-        class="text-danger mt-2"
-      >
-        <div class="border border-danger p-2">La contraseña es requerida</div>
-      </div>
-      <div
-        *ngIf="formLogin.controls['password'].errors?.['minlength'] && (formLogin.controls['password'].dirty || formLogin.controls['password'].touched)"
-        class="text-danger mt-2"
-      >
-        <div class="border border-danger p-2">
-          La contraseña debe tener al menos 8 caracteres
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-around mt-1">
-        <div class="d-flex align-items-center gap-1">
-          <input class="form-check-input" type="checkbox" />
-          <div class="pt-1" style="font-size: 0.9rem">Recordar</div>
-        </div>
-        <div class="pt-1">
-          <a
-            href="#"
-            class="text-decoration-none text-secondary fw-semibold fst-italic"
-            style="font-size: 0.9rem"
-            >¿Olvidaste tu contraseña?</a
-          >
-        </div>
-      </div>
-
-      <button
-        class="btn btn-primary text-white w-100 mt-4 fw-semibold shadow-sm"
-        type="submit"
-        [disabled]="formLogin.invalid"
-      >
-        Login
-      </button>
-    </form>
-
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
-      {{ errorMessage }}
-    </div>
+<h2>Login</h2>
+<form (submit)="login()">
+  <div>
+    <label for="email">email:</label>
+    <input type="text" id="email" [(ngModel)]="email" name="email" required>
   </div>
-</body>
+  <div>
+    <label for="clave">Clave:</label>
+    <input type="clave" id="clave" [(ngModel)]="clave" name="clave" required>
+  </div>
+  <button type="submit">Login</button>
+</form>
+<div *ngIf="error" style="color: red;">{{ error }}</div>
+`

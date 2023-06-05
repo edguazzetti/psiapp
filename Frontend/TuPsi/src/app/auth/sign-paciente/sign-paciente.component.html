@@ -10,6 +10,16 @@
       [formGroup]="formPaciente"
       (ngSubmit)="createPaciente()"
     >
+    <div class="col-md-6">
+      <label for="inputDni" class="form-label text-primary">*Dni</label>
+      <input
+        formControlName="dni"
+        type="text"
+        class="form-control"
+        id="inputDni"
+        required
+      />
+    </div>
       <div class="col-md-6">
         <label for="inputName" class="form-label text-primary">*Nombre</label>
         <input

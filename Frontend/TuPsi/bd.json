@@ -40,7 +40,6 @@
       "id": 3
     }
   ],
-  
   "pacientes": [
     {
       "id": 1,
@@ -83,6 +82,18 @@
       "provincia": "Buenos Aires",
       "localidad": "tandil",
       "id": 3
+    },
+    {
+      "nombre": "Emiliano",
+      "apellido": "Guazzetti",
+      "sexo": "Masculino",
+      "telefono": "2235757754",
+      "terapia": "Terapia Grupal",
+      "email": "Edguazzetti@gmail.com",
+      "clave": "18001800",
+      "provincia": "Buenos Aires",
+      "localidad": "Mar del Plata",
+      "id": 4
     }
   ],
   "Planes": [

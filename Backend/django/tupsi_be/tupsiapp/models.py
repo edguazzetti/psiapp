@@ -1,78 +1,99 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-# Chequear si estan bien las clases y si concuerdan con el archivo sql del sprint anterior
-
-class Administrador(models.Model):
-    dni_administrador = models.IntegerField(unique=True)
-    nombre_a = models.CharField(max_length=100)
-    apellido_a = models.CharField(max_length=100, null=True)
-    email_a = models.CharField(max_length=45, unique=True)
-    contrasena_a = models.CharField(max_length=45)
-    
-    def __str__(self):
-        return self.nombre_a
-
-
-class TiposDeTerapia(models.Model):
-    id_t = models.AutoField(primary_key=True)
-    nombre_rama = models.CharField(max_length=45)
-
-    def __str__(self):
-        return self.nombre_rama
-
+class CustomUser(AbstractUser):
+    email = models.EmailField(max_length=150, unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
 
 class Ubicacion(models.Model):
-    id_u = models.AutoField(primary_key=True)
     provincia = models.CharField(max_length=45)
     localidad = models.CharField(max_length=45)
 
-    def __str__(self):
-        return self.provincia
-
-
-class UsuarioPaciente(models.Model):
-    dni_paciente = models.IntegerField(unique=True)
-    nombre_p = models.CharField(max_length=100)
-    apellido_p = models.CharField(max_length=100, null=True)
-    email_p = models.CharField(max_length=45, unique=True)
-    contrasena_p = models.CharField(max_length=45)
-    provincia_p = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
+    class Meta:
+        db_table = "Ubicacion"
+        verbose_name = "Ubicacion"
+        verbose_name_plural = "Ubicaciones"
 
     def __str__(self):
-        return self.nombre_p
+        return self.localidad
+    
+class Terapia(models.Model):
+    id_terapia = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, blank=False)
 
+    class Meta:
+        db_table = "Terapia"
+        verbose_name = "Tipo de Terapia"
+        verbose_name_plural = "Terapias"
+
+    def __str__(self):
+        return self.nombre
+
+class Paciente(models.Model):
+    dni = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=100, blank=False)
+    apellido = models.CharField(max_length=100, blank=False)
+    SEXO_CHOICES = (
+        ('M', 'Masculino'),
+        ('F', 'Femenino'),
+    )
+    sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
+    email = models.CharField(max_length=100, unique=True, blank=False)
+    telefono = models.IntegerField()
+    password = models.CharField(max_length=45)
+    id_terapia = models.ForeignKey(Terapia, to_field="id_terapia", on_delete=models.CASCADE)
+    provincia = models.ForeignKey(Ubicacion, on_delete=models.CASCADE, related_name='pacientes_provincia')
+    localidad = models.ForeignKey(Ubicacion, on_delete=models.CASCADE, related_name='pacientes_localidad')
+
+    class Meta:
+        db_table = "Paciente"
+        verbose_name = "Paciente Registrado"
+        verbose_name_plural = "Pacientes"
 
 class Profesional(models.Model):
-    matricula_pr = models.IntegerField(unique=True)
-    nombre_pr = models.CharField(max_length=100)
-    apellido_pr = models.CharField(max_length=100)
-    email_pr = models.CharField(max_length=45, null=True)
-    contrasena_pr = models.CharField(max_length=8)
-    provincia_pr = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
-    localidad_pr = models.CharField(max_length=45)
-    tipos_de_terapia_pr = models.ForeignKey(TiposDeTerapia, on_delete=models.CASCADE)
+    dni = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=100, blank=False)
+    apellido = models.CharField(max_length=100, blank=False)
+    email = models.CharField(max_length=100, unique=True, blank=False)
+    password = models.CharField(max_length=45, default='12345678')
+    id_terapia = models.ForeignKey(Terapia, to_field="id_terapia", on_delete=models.CASCADE)
+    matricula = models.IntegerField(unique=True, blank=False)
+    provincia = models.ForeignKey(Ubicacion, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "Profesional"
+        verbose_name = "Profesional Registrado"
+        verbose_name_plural = "Profesionales"
 
     def __str__(self):
-        return self.nombre_pr
-
+        return self.nombre
 
 class Planes(models.Model):
-    id_plan = models.AutoField(primary_key=True)
-    precio_plan = models.IntegerField()
-    dni_adm_p = models.ForeignKey(Administrador, on_delete=models.CASCADE)
-    nombre_plan = models.CharField(max_length=50)
+    id = models.AutoField(primary_key=True)
+    precio = models.IntegerField(unique=True, blank=False)
+    nombre = models.CharField(max_length=50, unique=True, blank=False)
+
+    class Meta:
+        db_table = "Plan"
+        verbose_name = "Plan Disponible"
+        verbose_name_plural = "Planes"
 
     def __str__(self):
-        return self.nombre_plan
-
+        return self.nombre
 
 class PagosSuscripciones(models.Model):
-    id_pago = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     tipo_pago = models.CharField(max_length=20)
     id_plan_p = models.IntegerField()
-    fecha_inicio = models.DateField()
-    fecha_caducidad = models.DateField()
-    dni_pac = models.ForeignKey(UsuarioPaciente, on_delete=models.CASCADE)
+    fecha = models.DateField()
+    vencimiento = models.DateField()
+    dni_pac = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "Pagos"
+        verbose_name = "Estado de Pagos"
+        verbose_name_plural = "Pagos"
 
     def __str__(self):
-        return str(self.id_pago)
+        return str(self.fecha)

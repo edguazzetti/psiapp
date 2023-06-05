@@ -7,7 +7,8 @@ import { PlanesComponent } from './planes/planes.component';
 import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -19,12 +20,14 @@ import { FormsModule } from '@angular/forms';
     PlanesComponent,
     SearchComponent,
     
+    
   ],
 
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
    
   ],
   exports: [],
