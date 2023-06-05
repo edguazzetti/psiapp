@@ -1,5 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+<<<<<<< HEAD
+=======
+
+
+#Abstract user 
+class CustomUser(AbstractUser):
+    email = models.EmailField(
+        max_length=120, unique=True
+    )
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'password']
+
+>>>>>>> 6221f347e554122fc1d9a1cce0c7fd1946792b00
 
 class CustomUser(AbstractUser):
     email = models.EmailField(max_length=150, unique=True)

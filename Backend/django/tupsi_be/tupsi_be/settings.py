@@ -37,10 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'rest_framework',
     'corsheaders',
     'django_rest_passwordreset',
     'app',
+=======
+    'tupsiapp', #se agrega la app
+    'rest_framework',# rest
+    'corsheaders', #cors
+    'authentication',
+>>>>>>> 6221f347e554122fc1d9a1cce0c7fd1946792b00
 ]
 
 MIDDLEWARE = [
@@ -51,10 +58,25 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< HEAD
     'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'proyecto.urls'
+=======
+    'corsheaders.middleware.CorsMiddleware', #cors
+    'django.middleware.common.CommonMiddleware', #
+]
+
+CORS_ALLOWED_ORIGINS = [ #para llamar a la api desde el navegador
+    'http://localhost',
+    ]
+
+#Custom user model
+AUTH_USER_MODEL = "tupsiapp.CustomUser"
+
+ROOT_URLCONF = 'tupsi_be.urls'
+>>>>>>> 6221f347e554122fc1d9a1cce0c7fd1946792b00
 
 TEMPLATES = [
     {
@@ -85,7 +107,11 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
+<<<<<<< HEAD
         'PORT': '3306',
+=======
+        'PORT': '3308', #es mi puerto 3308
+>>>>>>> 6221f347e554122fc1d9a1cce0c7fd1946792b00
         'OPTIONS':{
         'sql_mode': 'traditional',
     }

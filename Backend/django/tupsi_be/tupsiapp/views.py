@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib.auth import authenticate, login, logout
 from rest_framework import status, viewsets, generics
 from rest_framework.response import Response
@@ -16,10 +17,22 @@ class LoginView(APIView):
 
     def post(self, request):
         # Recuperamos las credenciales y autenticamos al usuario
+=======
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+# Create your views here.
+
+class LoginView(APIView):
+    def post(self, request):
+>>>>>>> 6221f347e554122fc1d9a1cce0c7fd1946792b00
         email = request.data.get('email', None)
         password = request.data.get('password', None)
         user = authenticate(email=email, password=password)
 
+<<<<<<< HEAD
         # Si es correcto añadimos a la request la información de sesión
         if user:
             login(request, user)
@@ -87,3 +100,19 @@ class ListarUsuarios(generics.ListCreateAPIView):
         serializer = UserSerializer(queryset, many=True)
         if self.request.user.is_authenticated:
             return Response(serializer.data)
+=======
+        if user:
+            login(request, user)
+            return Response(
+                status=status.HTTP_200_OK
+            )
+        
+        return Response(
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response(status=status.HTTP_200_OK)
+>>>>>>> 6221f347e554122fc1d9a1cce0c7fd1946792b00

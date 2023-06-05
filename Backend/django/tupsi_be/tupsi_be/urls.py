@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from rest_framework import routers
 from app.views import LoginView, LogoutView, SignUpPacienteView, ProfileView, ListarUsuarios, agregarPaciente, verPacientes, verTerapias
 
@@ -17,5 +18,14 @@ urlpatterns = [
 
     # Agregar las rutas generadas por el router
     path('api/', include(router.urls)),
+=======
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    #api routes
+    path('api/', include('tupsiapp.urls')),
+    
+>>>>>>> 6221f347e554122fc1d9a1cce0c7fd1946792b00
 ]
 
