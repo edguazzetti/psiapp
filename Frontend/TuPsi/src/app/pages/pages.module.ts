@@ -7,7 +7,9 @@ import { PlanesComponent } from './planes/planes.component';
 import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 
