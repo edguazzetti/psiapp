@@ -8,6 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 
 
@@ -19,8 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     PlanesComponent,
     SearchComponent,
-    
-    
+
+
   ],
 
   imports: [
@@ -28,7 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     FormsModule,
     ReactiveFormsModule
-   
+
   ],
   exports: [],
 })
