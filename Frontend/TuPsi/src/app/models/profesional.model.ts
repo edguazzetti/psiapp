@@ -1,15 +1,16 @@
 export interface Profesional {
     id?: number,
-    dni: number,
+    username?: string,
     nombre: string,
     apellido: string,
+    dni?: number,
     sexo: string,
     telefono: number,
-    tipo_de_terapia: string, 
+    terapiaprofesional: string, 
     email: string,
-    clave:string,
+    password:string,
     provincia: string,
     localidad: string,
-    numero_matricula: number,
+    matricula: number,
     editando?: boolean; // Propiedad editando opcional
 }

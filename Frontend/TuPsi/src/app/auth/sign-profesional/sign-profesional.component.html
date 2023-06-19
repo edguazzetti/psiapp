@@ -4,13 +4,7 @@
     <h2 style="font-weight: lighter;">Registro de Profesionales</h2>
     </div>
 
-    <div class="container">
-      <form class="row g-3 mt-3" [formGroup]="formProfesional" (ngSubmit)="createProfesional()">
-        <div class="col-md-6">
-          <label for="inputDni" class="form-label text-primary">*Dni</label>
-          <input formControlName="dni" type="text" class="form-control" id="inputDni" required />
-        </div>
-    <div class="container">
+  <div class="container">
     <form class="row g-3 mt-3" [formGroup]="formProfesional" (ngSubmit)="createProfesional()">
       <div class="col-md-6">
         <label for="inputName" class="form-label text-primary">*Nombre</label>
@@ -116,3 +110,4 @@
     </div>
   </div>
   <br /><br />
+</body>

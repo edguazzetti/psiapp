@@ -8,8 +8,14 @@ import { PagesModule } from './pages/pages.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { CookieService } from "ngx-cookie-service";
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { PacienteService } from './services/paciente.service';
+import { JwtInterceptor } from './services/interceptor';
+import { ErrorInterceptor } from './services/error.interceptor';
+import { LoginService } from './services/login.service';
+import { TerapiaService } from './services/terapia.service';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,9 +30,11 @@ import { CookieService } from "ngx-cookie-service";
     BrowserAnimationsModule,
     HttpClientModule,
     PagesModule,
-    
   ],
-  providers: [CookieService],
+  providers: [PacienteService,LoginService, TerapiaService,
+  {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true},
+  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

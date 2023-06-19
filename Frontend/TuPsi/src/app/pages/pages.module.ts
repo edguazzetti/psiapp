@@ -7,11 +7,8 @@ import { PlanesComponent } from './planes/planes.component';
 import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
-import { LoginAdminComponent } from './login-admin/login-admin.component';
-
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -22,16 +19,16 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
     HomeComponent,
     PlanesComponent,
     SearchComponent,
-
-
+    ProfileComponent,   
+     
   ],
 
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
 
+   
   ],
   exports: [],
 })

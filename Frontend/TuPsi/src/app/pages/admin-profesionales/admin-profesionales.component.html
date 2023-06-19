@@ -46,7 +46,7 @@
               <input
                 type="text"
                 class="form-control"
-                [value]="item.tipo_de_terapia"
+                [value]="item.terapiaprofesional"
                 [readonly]="!item.editando"
               />
             </td>
@@ -54,7 +54,7 @@
               <input type="text" class="form-control" [value]="item.email" [readonly]="!item.editando" />
             </td>
             <td>
-              <input type="password" class="form-control" [value]="item.clave" [readonly]="!item.editando" />
+              <input type="password" class="form-control" [value]="item.password" [readonly]="!item.editando" />
             </td>
             <td>
               <input type="text" class="form-control" [value]="item.provincia" [readonly]="!item.editando" />
@@ -66,7 +66,7 @@
               <input
                 type="text"
                 class="form-control"
-                [value]="item.numero_matricula"
+                [value]="item.matricula"
                 [readonly]="!item.editando"
               />
             </td>

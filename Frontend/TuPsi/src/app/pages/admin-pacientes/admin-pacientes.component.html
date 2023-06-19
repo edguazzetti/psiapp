@@ -7,7 +7,6 @@
         <thead>
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Dni</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Sexo</th>
@@ -29,14 +28,6 @@
                 type="text"
                 class="form-control"
                 [value]="item.id || ''"
-                [readonly]="!item.editando"
-              />
-            </td>
-            <td>
-              <input
-                type="text"
-                class="form-control"
-                [value]="item.dni"
                 [readonly]="!item.editando"
               />
             </td>
@@ -89,7 +80,7 @@
               <input
                 type="password"
                 class="form-control"
-                [value]="item.clave"
+                [value]="item.password"
                 [readonly]="!item.editando"
               />
             </td>
@@ -97,7 +88,7 @@
               <input
                 type="text"
                 class="form-control"
-                [value]="item.terapia"
+                [value]="item.terapiapaciente"
                 [readonly]="!item.editando"
               />
             </td>
@@ -121,7 +112,7 @@
               <input
                 type="text"
                 class="form-control"
-                [value]="item.suscripcion"
+                [value]="item.suscripto"
                 [readonly]="!item.editando"
               />
             </td>
@@ -129,7 +120,7 @@
               <input
                 type="text"
                 class="form-control"
-                [value]="item.plan"
+                [value]="item.planactual"
                 [readonly]="!item.editando"
               />
             </td>
@@ -225,3 +216,4 @@
   </div>
 </div>
 <hr>
+

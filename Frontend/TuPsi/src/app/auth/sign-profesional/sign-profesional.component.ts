@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProfesionalService } from 'src/app/services/profesional.service';
 import { Profesional } from 'src/app/models/profesional.model';
 
-
 @Component({
   selector: 'app-sign-profesional',
   templateUrl: './sign-profesional.component.html',
@@ -18,7 +17,6 @@ export class SignProfesionalComponent implements OnInit {
 
   ngOnInit(): void {
     this.formProfesional = new FormGroup({
-      dni: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       sexo: new FormControl('', Validators.required),
@@ -35,36 +33,34 @@ export class SignProfesionalComponent implements OnInit {
   createProfesional() {
     if (this.formProfesional.valid) {
       const formValue = this.formProfesional.value;
-      const { dni, nombre, apellido, sexo, telefono, tipo_de_terapia, email, clave, provincia, localidad, numero_matricula } = formValue;
+      const { nombre, apellido, sexo, telefono, tipo_de_terapia, email, clave, provincia, localidad, numero_matricula } = formValue;
 
       const profesional: Profesional = {
-        dni: dni.toString(),
         nombre: nombre.toString(),
         apellido: apellido.toString(),
-        tipo_de_terapia: tipo_de_terapia.toString(),
+        sexo: sexo.toString(),
+        telefono: telefono.toString(),
+        terapiaprofesional: tipo_de_terapia.toString(),
         email: email.toString(),
-        clave: clave.toString(),
+        password: clave.toString(),
         provincia: provincia.toString(),
         localidad: localidad.toString(),
-        numero_matricula: numero_matricula.toString(),
+        matricula: numero_matricula.toString(),
       };
 
-
-      this.profesionalService.createProfessional(profesional).subscribe({
-        next: (profesional) => {
-          console.log(profesional);
-        },
-        error: (e) => {
-          console.error('Error al intentar registrar el profesional:', e);
-          this.successMessage = '';
-          this.errorMessage = 'Error al crear el profesional. Por favor, inténtelo nuevamente.';
-        },
-        complete: () => {
+      this.profesionalService.createProfesional(profesional).subscribe(
+        (response) => {
+          console.log('Profesional registrado con éxito:', response);
           this.formProfesional.reset();
           this.successMessage = 'Profesional creado con éxito.';
           this.errorMessage = '';
+        },
+        (error) => {
+          console.error('Error al intentar registrar el profesional:', error);
+          this.successMessage = '';
+          this.errorMessage = 'Error al crear el profesional. Por favor, inténtelo nuevamente.';
         }
-      })
+      );
     } else {
       this.successMessage = '';
       this.errorMessage = 'Por favor, complete todos los campos obligatorios.';

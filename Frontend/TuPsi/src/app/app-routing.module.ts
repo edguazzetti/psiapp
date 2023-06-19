@@ -9,8 +9,7 @@ import { AdminPacientesComponent } from './pages/admin-pacientes/admin-pacientes
 import { AdminPlanesComponent } from './pages/admin-planes/admin-planes.component';
 import { SignPacienteComponent } from './auth/sign-paciente/sign-paciente.component';
 import { PlanesComponent } from './pages/planes/planes.component';
-import { ProfileComponent } from './auth/profile/profile.component';
-import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -22,9 +21,7 @@ const routes: Routes = [
   { path: 'AdminPlanes', component: AdminPlanesComponent},
   { path: 'signPaciente', component: SignPacienteComponent},
   { path: 'planes', component: PlanesComponent},
-  {path: 'miPerfil', component: ProfileComponent}
-  { path: 'loginAdmin', component: LoginAdminComponent}
-
+  {path: 'miPerfil', component: ProfileComponent},
 
 
 ];
