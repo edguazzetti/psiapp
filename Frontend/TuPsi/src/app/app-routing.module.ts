@@ -10,6 +10,7 @@ import { AdminPlanesComponent } from './pages/admin-planes/admin-planes.componen
 import { SignPacienteComponent } from './auth/sign-paciente/sign-paciente.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'signPaciente', component: SignPacienteComponent},
   { path: 'planes', component: PlanesComponent},
   {path: 'miPerfil', component: ProfileComponent},
+  { path: 'loginAdmin', component: LoginAdminComponent}
 
 
 ];
