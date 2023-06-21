@@ -53,7 +53,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   obtenerTiposTerapiaDisponibles() {
     this.tiposTerapiaDisponibles = Array.from(
-      new Set(this.profesionales.map((profesional) => profesional.tipo_de_terapia))
+      new Set(this.profesionales.map((profesional) => profesional.terapiaprofesional))
     );
   }
 
@@ -76,7 +76,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   aplicarFiltros() {
     this.profesionalesFiltrados = this.profesionales.filter((profesional) => {
       if (
-        (!this.tipoTerapiaSeleccionada || profesional.tipo_de_terapia === this.tipoTerapiaSeleccionada) &&
+        (!this.tipoTerapiaSeleccionada || profesional.terapiaprofesional === this.tipoTerapiaSeleccionada) &&
         (!this.provinciaSeleccionada || profesional.provincia === this.provinciaSeleccionada)
       ) {
         return true;

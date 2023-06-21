@@ -1,56 +1,42 @@
-<title>Inicio Sesion Ψ</title>
-<body
-  class="bg-primary d-flex justify-content-center align-items-center vh-100"
->
-  <div
-    class="bg-white p-5 rounded-5 text-secondary shadow"
-    style="width: 25rem"
-  >
+<title>Inicio de sesión Ψ</title>
+<body class="bg-primary d-flex justify-content-center align-items-center vh-100">
+  <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 25rem">
     <div class="d-flex justify-content-center">
-      <img
-        src="../../../assets/img/cuenta.png"
-        alt="login-icon"
-        style="height: 7rem"
-      />
+      <img src="../../../assets/img/cuenta.png" alt="login-icon" style="height: 7rem" />
     </div>
 
     <div class="text-center fs-1 fw-bold text-primary">Login</div>
 
-    <form [formGroup]="formLogin" (ngSubmit)="createLogin()">
+    <form [formGroup]="form" (ngSubmit)="onLogin($event)">
       <div class="input-group mt-4">
         <div class="input-group-text"></div>
         <input
           class="form-control bg-light"
           type="text"
           placeholder="Email"
-          formControlName="email"
+          formControlName="mail"
           required
           [ngClass]="{
-            'is-invalid':
-              formLogin.controls['email'].invalid &&
-              (formLogin.controls['email'].dirty ||
-                formLogin.controls['email'].touched),
-            'is-valid':
-              formLogin.controls['email'].valid &&
-              (formLogin.controls['email'].dirty ||
-                formLogin.controls['email'].touched)
+            'is-invalid': MailValid,
+            'is-valid': Mail?.valid && (Mail?.dirty || Mail?.touched)
           }"
         />
       </div>
-      <div
-        *ngIf="formLogin.controls['email'].errors?.['required'] && (formLogin.controls['email'].dirty || formLogin.controls['email'].touched)"
-        class="text-danger mt-2"
-      >
-        <div class="border border-danger p-2">El email es requerido</div>
+      <div *ngIf="MailValid" class="text-danger mt-2">
+        <div class="border border-danger p-2">
+          La dirección de correo electrónico es requerida
+        </div>
       </div>
       <div
-        *ngIf="formLogin.controls['email'].errors?.['email'] && (formLogin.controls['email'].dirty || formLogin.controls['email'].touched)"
+        *ngIf="form.controls['mail'].errors?.['email'] && (Mail?.dirty || Mail?.touched)"
         class="text-danger mt-2"
       >
-        <div class="border border-danger p-2">El email no es válido</div>
+        <div class="border border-danger p-2">
+          El correo electrónico no es válido
+        </div>
       </div>
 
-      <div class="input-group mt-1">
+      <div class="input-group mt-4">
         <div class="input-group-text"></div>
         <input
           class="form-control bg-light"
@@ -59,58 +45,21 @@
           formControlName="password"
           required
           [ngClass]="{
-            'is-invalid':
-              formLogin.controls['password'].invalid &&
-              (formLogin.controls['password'].dirty ||
-                formLogin.controls['password'].touched),
-            'is-valid':
-              formLogin.controls['password'].valid &&
-              (formLogin.controls['password'].dirty ||
-                formLogin.controls['password'].touched)
+            'is-invalid': PasswordValid,
+            'is-valid': Password?.valid && (Password?.dirty || Password?.touched)
           }"
         />
       </div>
-      <div
-        *ngIf="formLogin.controls['password'].errors?.['required'] && (formLogin.controls['password'].dirty || formLogin.controls['password'].touched)"
-        class="text-danger mt-2"
-      >
-        <div class="border border-danger p-2">La contraseña es requerida</div>
+      <div *ngIf="PasswordValid" class="text-danger mt-2">
+        La contraseña es requerida
       </div>
       <div
-        *ngIf="formLogin.controls['password'].errors?.['minlength'] && (formLogin.controls['password'].dirty || formLogin.controls['password'].touched)"
+        *ngIf="form.controls['password'].errors?.['minlength'] && (Password?.dirty || Password?.touched)"
         class="text-danger mt-2"
       >
-        <div class="border border-danger p-2">
-          La contraseña debe tener al menos 8 caracteres
-        </div>
+        La contraseña debe tener al menos 8 caracteres
       </div>
-
-      <div class="d-flex justify-content-around mt-1">
-        <div class="d-flex align-items-center gap-1">
-          <input class="form-check-input" type="checkbox" />
-          <div class="pt-1" style="font-size: 0.9rem">Recordar</div>
-        </div>
-        <div class="pt-1">
-          <a
-            href="#"
-            class="text-decoration-none text-secondary fw-semibold fst-italic"
-            style="font-size: 0.9rem"
-            >¿Olvidaste tu contraseña?</a
-          >
-        </div>
-      </div>
-
-      <button
-        class="btn btn-primary text-white w-100 mt-4 fw-semibold shadow-sm"
-        type="submit"
-        [disabled]="formLogin.invalid"
-      >
-        Login
-      </button>
+      <button type="submit" class="btn btn-primary mt-3">Iniciar sesión</button>
     </form>
-
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
-      {{ errorMessage }}
-    </div>
   </div>
 </body>

@@ -1,56 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
+import { Paciente } from 'src/app/models/paciente.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  formLogin!: FormGroup;
-  errorMessage: string = '';
+  user: Paciente;
+  returnUrl: string;
+  form: FormGroup;
+  errorMessage: string | null = null;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.user = {} as Paciente;
+    this.returnUrl = '/';
+    this.form = this.formBuilder.group(
+      {
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        mail: ['', [Validators.required, Validators.email]]
+      }
+    )
+  }
+
+  get Password() {
+    return this.form.get("password");
+  }
+
+  get Mail() {
+    return this.form.get("mail");
+  }
+
+  get PasswordValid() {
+    return this.Password?.touched && !this.Password?.valid;
+  }
+
+  get MailValid() {
+    return this.Mail?.touched && !this.Mail?.valid;
+  }
 
   ngOnInit(): void {
-    this.formLogin = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)])
-    });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  createLogin() {
-    if (this.formLogin.valid) {
-      const formValue = this.formLogin.value;
-      const { email, password } = formValue;
-
-      this.loginService.getUsers().subscribe(
-        (users) => {
-          const foundUser = users.find((user: any) => user['email'] === email);
-
-          if (foundUser) {
-            if (foundUser['password'] === password) {
-              console.log('Inicio de sesión exitoso:', foundUser);
-              this.router.navigate(['/dashboard']);
-            } else {
-              console.error('Contraseña incorrecta.');
-              this.errorMessage = 'Usuario y/o contraseña no válidos';
-            }
-          } else {
-            console.error('Usuario no encontrado.');
-            this.errorMessage = 'Usuario y/o contraseña no válidos';
-          }
-        },
-        (error) => {
-          console.error('Error al obtener los usuarios:', error);
-          this.errorMessage = 'Error al iniciar sesión. Por favor, inténtelo nuevamente.';
-        }
-      );
-    } else {
-      this.errorMessage = 'Por favor, complete todos los campos obligatorios correctamente.';
-    }
+  onLogin(event: Event): void {
+    event.preventDefault();
+    const email = this.form.get('mail')?.value;
+    const password = this.form.controls['password'].value;
+    this.loginService.login(email,password).subscribe(
+      data => {
+       
+        this.router.navigate(['/miPerfil']);
+      },
+      error => {
+        // Muestra un mensaje de error en caso de que el inicio de sesión falle
+        this.errorMessage = 'Correo electrónico no válido';
+      }
+    );
   }
+
+  
 }
+
 

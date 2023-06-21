@@ -1,82 +1,139 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { Paciente } from 'src/app/models/paciente.model';
+import { Terapia } from 'src/app/models/terapia.model';
+import { TerapiaService } from 'src/app/services/terapia.service';
+import { Provincia } from 'src/app/models/provincia.model';
+import { Localidad } from 'src/app/models/localidad.model';
+import { UbicacionService } from 'src/app/services/ubicacion.service';
 
 @Component({
   selector: 'app-sign-paciente',
   templateUrl: './sign-paciente.component.html',
-  styleUrls: ['./sign-paciente.component.css']
+  styleUrls: ['./sign-paciente.component.css'],
 })
-export class SignPacienteComponent implements OnInit {
 
-  formPaciente!: FormGroup;
-  successMessage: string = '';
-  errorMessage: string = '';
-
-  constructor(private pacienteService: PacienteService) {}
-
+  export class SignPacienteComponent implements OnInit {
+    convertirAEntero(valor: any): number {
+      return parseInt(valor, 10);
+    }
+  form: FormGroup;
+  terapias: Terapia[] = []; // Arreglo para almacenar las terapias
+  provincias: Provincia[]= []; // arreglo para almacenar las provincias
+  localidades: Localidad[]= []; //arreglo para almacenar las localidades
+  
+  constructor(
+    private formBuilder: FormBuilder,
+    public pacienteService: PacienteService,
+    public ubicacionService: UbicacionService,
+    public terapiaService: TerapiaService,
+    private router: Router,
+  ) {
+    this.form = this.formBuilder.group({
+      dni: ['', Validators.required],
+      name: ['', Validators.required],
+      apellido: ['', Validators.required],
+      sexo: ['', Validators.required],
+      telefono: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      provincia: ['', Validators.required],
+      localidad: ['', Validators.required],
+      terapiapaciente: ['', Validators.required],
+    });
+   
+  }
+ 
   ngOnInit(): void {
-    this.formPaciente = new FormGroup({
-      nombre: new FormControl('', Validators.required),
-      apellido: new FormControl('', Validators.required),
-      sexo: new FormControl('', Validators.required),
-      telefono: new FormControl('', Validators.required),
-      terapia: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      clave: new FormControl('', Validators.required),
-      provincia: new FormControl('', Validators.required),
-      localidad: new FormControl('', Validators.required),
-
+    //TerapiaService
+    this.terapiaService.obtenerTerapias(); // Llama a la función para obtener las terapias
+    this.terapiaService.getTerapias().subscribe(terapias => {
+    this.terapias = terapias;
+    });
+    // Actualiza el arreglo de terapias cuando cambie
+    //UbicacionService
+    this.ubicacionService.obtenerProvincias(); // Llama a la función para obtener las provincias
+    this.ubicacionService.obtenerLocalidades(); // Llama a la función para obtener las localidades
+    this.ubicacionService.getProvincias().subscribe(provincias => {
+    this.provincias = provincias; // Actualiza el arreglo de provincias cuando cambie
+    });
+    this.ubicacionService.getLocalidades().subscribe(localidades => {
+      this.localidades = localidades; // Actualiza el arreglo de localidades cuando cambie
     });
   }
 
-  createPaciente() {
-    if (this.formPaciente.valid) {
-      const formValue = this.formPaciente.value;
-      const { nombre, apellido, sexo, telefono, terapia, email, clave, provincia, localidad} = formValue;
+  //Al enviar el formulario de registro del paciente
+  
+  onSubmit(): void {
+    const user: Paciente = {
+      username: this.form.value.name + this.form.value.lastname,
+      email: this.form.value.email,
+      password: this.form.value.password,
+      dni: this.form.value.dni,
+      name: this.form.value.name,
+      lastname: this.form.value.lastname,
+      sexo: this.form.value.sexo,
+      telefono: this.form.value.telefono,
+      terapiapaciente: this.form.value.terapiapaciente,
+      provincia: this.form.value.provincia,
+      localidad: this.form.value.localidad,
+    };
+    console.log('Formulario', this.form.value)
+    this.pacienteService.createPaciente(user).subscribe(
+      response => {
+        console.log('Registro exitoso', response);
+        alert('El registro ha sido creado satisfactoriamente. A continuación, por favor Inicie Sesión.');
+        this.router.navigate(['/login']);
+      },
+      error => {
+        console.error('Error durante el registro ', error);
+        // alert('Ha ocurrido un error durante el registro. Por favor, intenta nuevamente.');
+      }
+    );
+  }
+  
+  
 
-      const paciente: Paciente = {
-        nombre: nombre.toString(),
-        apellido: apellido.toString(),
-        sexo: sexo.toString(),
-        telefono: telefono.toString(),
-        terapia: terapia.toString(),
-        email: email.toString(),
-        clave: clave.toString(),
-        provincia: provincia.toString(),
-        localidad: localidad.toString(),
-
-      };
-
-      this.pacienteService.createPaciente(paciente).subscribe(
-        (response) => {
-          console.log('Paciente registrado con éxito:', response);
-          this.formPaciente.reset();
-          this.successMessage = 'Bienvenido';
-          this.errorMessage = '';
-        },
-        (error) => {
-          console.error('Error al intentar registrar el Paciente:', error);
-          this.successMessage = '';
-          this.errorMessage = 'Error al crear el Paciente. Por favor, inténtelo nuevamente.';
-        }
-      );
-    } else {
-      this.successMessage = '';
-      this.errorMessage = 'Por favor, complete todos los campos obligatorios.';
-    }
+  get dni() {
+    return this.form.get('dni');
   }
 
-  updatePaciente() {
-    // Implementa la lógica para actualizar un paciente
+  get name() {
+    return this.form.get('name');
   }
 
-  deletePaciente() {
-    // Implementa la lógica para eliminar un paciente
+  get lastname() {
+    return this.form.get('lastname');
   }
 
-  generateID(): number {
-    return Math.floor(Math.random() * 900) + 100;
+  get sexo() {
+    return this.form.get('sexo');
+  }
+
+  get telefono() {
+    return this.form.get('telefono');
+  }
+
+  get terapiapaciente() {
+    return this.form.get('terapiapaciente');
+  }
+
+  get email() {
+    return this.form.get('email');
+  }
+
+  get password() {
+    return this.form.get('password');
+  }
+
+  get provincia() {
+    return this.form.get('provincia');
+  }
+
+  get localidad() {
+    return this.form.get('localidad');
   }
 }

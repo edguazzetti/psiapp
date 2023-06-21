@@ -11,27 +11,19 @@ import { Subscription } from 'rxjs';
 export class AdminPacientesComponent implements OnInit, OnDestroy {
 
   Pacientes: Paciente[] = [];
-  pacienteCreadoSubscription: Subscription = Subscription.EMPTY;
   tienePacientes: boolean = false;
 
   constructor(private servicioPacientes: PacienteService) {}
 
   ngOnInit() {
     this.verPacientes();
-    this.pacienteCreadoSubscription = this.servicioPacientes
-      .getPacienteCreadoObservable()
-      .subscribe((paciente) => {
-        this.Pacientes.push(paciente);
-        this.tienePacientes = true;
-      });
   }
 
   ngOnDestroy() {
-    this.pacienteCreadoSubscription.unsubscribe();
   }
 
   verPacientes() {
-    this.servicioPacientes.getPaciente().subscribe(
+    this.servicioPacientes.getAllPacientes().subscribe(
       (data) => {
         this.Pacientes = data;
         this.tienePacientes = this.Pacientes.length > 0;
@@ -41,6 +33,7 @@ export class AdminPacientesComponent implements OnInit, OnDestroy {
       }
     );
   }
+  
 
   editarPaciente(item: Paciente) {
     item.editando = true;

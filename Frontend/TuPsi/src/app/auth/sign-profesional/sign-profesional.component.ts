@@ -40,12 +40,12 @@ export class SignProfesionalComponent implements OnInit {
         apellido: apellido.toString(),
         sexo: sexo.toString(),
         telefono: telefono.toString(),
-        tipo_de_terapia: tipo_de_terapia.toString(),
+        terapiaprofesional: tipo_de_terapia.toString(),
         email: email.toString(),
-        clave: clave.toString(),
+        password: clave.toString(),
         provincia: provincia.toString(),
         localidad: localidad.toString(),
-        numero_matricula: numero_matricula.toString(),
+        matricula: numero_matricula.toString(),
       };
 
       this.profesionalService.createProfesional(profesional).subscribe(

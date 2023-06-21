@@ -1,188 +1,156 @@
-<title>Registro de Pacientes Ψ</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Pacientes Ψ</title>
+</head>
 <body>
-  <div class="container" style="text-align: center;">
-    <h2 style="font-weight: lighter;">Registro de Pacientes</h2>
-    </div>
+  <div class="container" style="text-align: center">
+    <h2 style="font-weight: lighter">Registro de Pacientes</h2>
+  </div>
 
   <div class="container">
-    <form
-      class="row g-3 mt-3"
-      [formGroup]="formPaciente"
-      (ngSubmit)="createPaciente()"
-    >
-      <div class="col-md-6">
-        <label for="inputName" class="form-label text-primary">*Nombre</label>
-        <input
-          formControlName="nombre"
-          type="text"
-          class="form-control"
-          id="inputName"
-          required
-        />
-      </div>
-
-      <div class="col-md-6">
-        <label for="inputLastName" class="form-label text-primary"
-          >*Apellido</label
-        >
-        <input
-          formControlName="apellido"
-          type="text"
-          class="form-control"
-          id="inputLastName"
-          required
-        />
-      </div>
-
-      <div class="col-md-6">
-        <label for="inputEmail" class="form-label text-primary">*Email</label>
-        <input
-          formControlName="email"
-          type="email"
-          class="form-control"
-          id="inputEmail"
-          required
-        />
-      </div>
-
-      <div class="col-md-6">
-        <label for="inputPhone" class="form-label text-primary"
-          >*Teléfono</label
-        >
-        <input
-          formControlName="telefono"
-          type="number"
-          class="form-control"
-          id="inputPhone"
-          required
-        />
-      </div>
-
-      <div class="col-md-6">
-        <label
-          for="inputPassword"
-          class="form-label text-primary"
-          minlength="6"
-          maxlength="15"
-          >*Contraseña</label
-        >
-        <input
-          formControlName="clave"
-          type="password"
-          class="form-control"
-          id="inputPassword"
-          required
-        />
-      </div>
-
-      <div class="col-md-6">
-        <label for="inputTherapy" class="form-label text-primary"
-          >*Tipos de terapia</label
-        >
-        <input
-          formControlName="terapia"
-          type="text"
-          class="form-control"
-          id="inputTherapy"
-          placeholder="Terapia Familiar...Terapia Individual..."
-          required
-        />
-      </div>
-
-      <div class="col-md-6">
-        <label for="inputSexo" class="form-label text-primary">Sexo</label>
-        <select formControlName="sexo" id="inputSexo" class="form-select">
-          <option value="">Elegir...</option>
-          <option value="Femenino">Femenino</option>
-          <option value="Masculino">Masculino</option>
-          <option value="Otro">Otro</option>
-        </select>
-      </div>
-
-      <div class="col-md-6">
-        <label for="inputState" class="form-label text-primary"
-          >*Provincia</label
-        >
-        <select
-          formControlName="provincia"
-          id="inputState"
-          class="form-select"
-          required
-        >
-          <option value="">Elegir...</option>
-          <option value="Buenos Aires">Buenos Aires</option>
-          <option value="Ciudad Autónoma de Buenos Aires">
-            Ciudad Autónoma de Buenos Aires
-          </option>
-          <option value="Catamarca">Catamarca</option>
-          <option value="Chaco">Chaco</option>
-          <option value="Chubut">Chubut</option>
-          <option value="Córdoba">Córdoba</option>
-          <option value="Corrientes">Corrientes</option>
-          <option value="Entre Ríos">Entre Ríos</option>
-          <option value="Formosa">Formosa</option>
-          <option value="Jujuy">Jujuy</option>
-          <option value="La Pampa">La Pampa</option>
-          <option value="La Rioja">La Rioja</option>
-          <option value="Mendoza">Mendoza</option>
-          <option value="Misiones">Misiones</option>
-          <option value="Neuquén">Neuquén</option>
-          <option value="Río Negro">Río Negro</option>
-          <option value="Salta">Salta</option>
-          <option value="San Juan">San Juan</option>
-          <option value="San Luis">San Luis</option>
-          <option value="Santa Cruz">Santa Cruz</option>
-          <option value="Santa Fe">Santa Fe</option>
-          <option value="Tierra del Fuego, Antártida e Islas del Atlántico Sur">
-            Tierra del Fuego, Antártida e Islas del Atlántico Sur
-          </option>
-          <option value="Tucumán">Tucumán</option>
-        </select>
-      </div>
-
-      <div class="col-md-6">
-        <label for="inputCity" class="form-label text-primary"
-          >*Localidad</label
-        >
-        <input
-          formControlName="localidad"
-          type="text"
-          class="form-control"
-          id="inputCity"
-          required
-        />
-      </div>
-
-      <div class="col-12">
-        <div class="form-check">
-          <input
-            formControlName="acepta_terminos"
-            type="checkbox"
-            id="checkTerms"
-            class="form-check-input"
-            required
-          />
-          <label class="form-check-label" for="checkTerms"
-            >Acepto los términos</label
-          >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="name" formControlName="name" [class.border-danger]="name?.invalid && name?.touched" />
+        <div *ngIf="name?.invalid && name?.touched">
+          <p *ngIf="name?.hasError('required')" class="text-danger">
+            El nombre es requerido.
+          </p>
         </div>
       </div>
 
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Registrarme</button>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" class="form-control" id="lastname" formControlName="lastname" [class.border-danger]="lastname?.invalid && lastname?.touched" />
+        <div *ngIf="lastname?.invalid && lastname?.touched">
+          <p *ngIf="lastname?.hasError('required')" class="text-danger">
+            El apellido es requerido.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dni">DNI</label>
+        <input type="text" class="form-control" id="dni" formControlName="dni" [class.border-danger]="dni?.invalid && dni?.touched" />
+        <div *ngIf="dni?.invalid && dni?.touched">
+          <p *ngIf="dni?.hasError('required')" class="text-danger">
+            El DNI es requerido.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="sexo">Sexo</label>
+        <select class="form-control" id="sexo" formControlName="sexo" [class.border-danger]="sexo?.invalid && sexo?.touched">
+          <option value="" disabled selected>Seleccione el sexo</option>
+          <option value="fmenino">Femenino</option>
+          <option value="masculino">Masculino</option>
+        </select>
+        <div *ngIf="sexo?.invalid && sexo?.touched">
+          <p *ngIf="sexo?.hasError('required')" class="text-danger">
+            El sexo es requerido.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="terapia">Terapia</label>
+        <select class="form-control" id="terapia" formControlName="terapiapaciente" [class.border-danger]="terapiapaciente?.invalid && terapiapaciente?.touched">
+          <option value="" disabled selected>Seleccione una terapia</option>
+          <option *ngFor="let terapia of terapias" [value]="terapia.id">{{ terapia.nombre }}</option>
+        </select>
+        <div *ngIf="terapiapaciente?.invalid && terapiapaciente?.touched">
+          <p *ngIf="terapiapaciente?.hasError('required')" class="text-danger">
+            El campo tipo de terapia es requerido.
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="provincia">Provincia</label>
+        <select class="form-control" id="provincia" formControlName="provincia" [class.border-danger]="provincia?.invalid && provincia?.touched">
+          <option value="" disabled selected>Seleccione una provincia</option>
+          <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.provincia }}</option>
+        </select>
+        <div *ngIf="provincia?.invalid && provincia?.touched">
+          <p *ngIf="provincia?.hasError('required')" class="text-danger">
+            El campo tipo de provincia es requerido.
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="provincia">Localidad</label>
+        <select class="form-control" id="localidad" formControlName="localidad" [class.border-danger]="localidad?.invalid && localidad?.touched">
+          <option value="" disabled selected>Seleccione una localidad</option>
+          <option *ngFor="let localidad of localidades" [value]="localidad.id">{{ localidad.localidad }}</option>
+        </select>
+        <div *ngIf="localidad?.invalid && localidad?.touched">
+          <p *ngIf="localidad?.hasError('required')" class="text-danger">
+            El campo tipo de localidad es requerido.
+          </p>
+        </div>
+      </div>
+      <!-- <div class="form-group">
+        <label for="provincia">Provincia</label>
+        <input type="text" class="form-control" id="provincia" formControlName="provincia" [class.border-danger]="provincia?.invalid && provincia?.touched" />
+        <div *ngIf="provincia?.invalid && provincia?.touched">
+          <p *ngIf="provincia?.hasError('required')" class="text-danger">
+            La provincia es requerida.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="localidad">Localidad</label>
+        <input type="text" class="form-control" id="localidad" formControlName="localidad" [class.border-danger]="localidad?.invalid && localidad?.touched" />
+        <div *ngIf="localidad?.invalid && localidad?.touched">
+          <p *ngIf="localidad?.hasError('required')" class="text-danger">
+            La localidad es requerida.
+          </p>
+        </div>
+      </div> -->
+
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" formControlName="telefono" [class.border-danger]="telefono?.invalid && telefono?.touched" />
+        <div *ngIf="telefono?.invalid && telefono?.touched">
+          <p *ngIf="telefono?.hasError('required')" class="text-danger">
+            El teléfono es requerido.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" [class.border-danger]="email?.invalid && email?.touched" />
+        <div *ngIf="email?.invalid && email?.touched">
+          <p *ngIf="email?.hasError('required')" class="text-danger">
+            El email es requerido.
+          </p>
+          <p *ngIf="email?.hasError('email')" class="text-danger">
+            El email ingresado no es válido.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" id="password" formControlName="password" [class.border-danger]="password?.invalid && password?.touched" />
+        <div *ngIf="password?.invalid && password?.touched">
+          <p *ngIf="password?.hasError('required')" class="text-danger">
+            La contraseña es requerida.
+          </p>
+        </div>
+      </div>
+
+      <div class="container" style="text-align: center">
+        <button type="submit" class="btn btn-primary">
+          Registrarse
+        </button>
       </div>
     </form>
-
-    <div class="row mt-3">
-      <div class="col-md-12">
-        <div *ngIf="successMessage" class="alert alert-success" role="alert">
-          {{ successMessage }}
-        </div>
-        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-          {{ errorMessage }}
-        </div>
-      </div>
-    </div>
   </div>
-  <br /><br />
 </body>
+</html>

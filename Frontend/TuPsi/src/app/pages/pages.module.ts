@@ -8,6 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -18,13 +19,15 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     PlanesComponent,
     SearchComponent,
-    
+    ProfileComponent,   
+     
   ],
 
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+
    
   ],
   exports: [],

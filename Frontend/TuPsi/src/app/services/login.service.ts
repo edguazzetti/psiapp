@@ -1,22 +1,76 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private apiURL: string = 'http://localhost:4200/login'; // ver en back
+  url = "http://127.0.0.1:8000/api/accounts/login/";
+  currentUserSubject: BehaviorSubject<any>;
+  currentUser: Observable<any>;
+  private _estaAutenticado = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {}
-
-  getUsers(): Observable<any> {
-    return this.http.get<any>(`${this.apiURL}/users`);
+  constructor(private http: HttpClient) {
+    
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || '{}'));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+  
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(this.url, { email, password }, { observe: 'response' })
+      .pipe(
+        
+        map(response => {
+          const headers = response.headers; // Get the response headers
+          const data = response.body; // Get the response body data
+          if (data && data.username) {
+           
+            localStorage.setItem('currentUser', JSON.stringify(data));
+            localStorage.setItem('token', this.getCookieValue(headers, 'csrftoken') || '');
+            localStorage.setItem('username', data.username);
+            
+            this.currentUserSubject.next(data);
+            this._estaAutenticado.next(true);
+          }
+    
+          return data;
+        }),
+        catchError(error => {
+          console.error('Error storing data in localStorage:', error);
+          return throwError(error);
+        })
+      );
   }
 
-  validateLogin(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiURL}/login`, { username, password });
+  private getCookieValue(headers: HttpHeaders, cookieName: string): string | null {
+    const cookies: string | null = headers.get('Set-Cookie');
+    const cookieString: string | undefined = cookies?.split(';')
+      .find((cookie: string) => cookie.trim().startsWith(`${cookieName}=`));
+  
+    if (cookieString) {
+      return cookieString.split('=')[1].trim();
+    }
+  
+    return null;
+  }
+
+  
+  logout(): void {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    this.currentUserSubject.next({});
+    this._estaAutenticado.next(false); // Actualiza el valor de _estaAutenticado
+    
+  }
+
+  get usuarioAutenticado(): any {
+    return this.currentUserSubject.value;
+  }
+
+  get estaAutenticado(): BehaviorSubject<boolean> {
+    return this._estaAutenticado;
   }
 }
-
-

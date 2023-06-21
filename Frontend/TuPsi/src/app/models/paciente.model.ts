@@ -1,16 +1,19 @@
 export interface Paciente {
+    username?:string;
     id?: number;
-    nombre: string;
-    apellido: string;
+    dni: number;
+    name: string;
+    lastname: string;
     sexo: string;
     telefono: number;
-    terapia: string;
+    terapiapaciente?: string;
     email: string; 
-    clave: string;
-    provincia: string;
+    password: string;
+    provincia: number;
     localidad: string;
-    suscripcion?: boolean;
-    plan?: string;
+    suscripto?: boolean;
+    planactual?: string;
     editando?: boolean; // Propiedad editando opcional
+    token?: string;
   }
   
