@@ -9,7 +9,7 @@ import { Terapia } from '../models/terapia.model';
 export class TerapiaService {
   private terapiasSubject: BehaviorSubject<Terapia[]> = new BehaviorSubject<Terapia[]>([]); //almacenará y emitirá un arreglo de terapias.
   public terapias$: Observable<Terapia[]> = this.terapiasSubject.asObservable(); // suscribirse a los cambios en terapiasSubject
-  private terapiasURL = 'http://127.0.0.1:8000/api/terapias/';
+  private terapiasURL = 'http://127.0.0.1:8000/api/accounts/terapias/';
 
   constructor(private http: HttpClient) { }
 

@@ -5,6 +5,9 @@ import { PacienteService } from 'src/app/services/paciente.service';
 import { Paciente } from 'src/app/models/paciente.model';
 import { Terapia } from 'src/app/models/terapia.model';
 import { TerapiaService } from 'src/app/services/terapia.service';
+import { Provincia } from 'src/app/models/provincia.model';
+import { Localidad } from 'src/app/models/localidad.model';
+import { UbicacionService } from 'src/app/services/ubicacion.service';
 
 @Component({
   selector: 'app-sign-paciente',
@@ -18,19 +21,23 @@ import { TerapiaService } from 'src/app/services/terapia.service';
     }
   form: FormGroup;
   terapias: Terapia[] = []; // Arreglo para almacenar las terapias
-
+  provincias: Provincia[]= []; // arreglo para almacenar las provincias
+  localidades: Localidad[]= []; //arreglo para almacenar las localidades
+  
   constructor(
     private formBuilder: FormBuilder,
-    private pacienteService: PacienteService,
-    private router: Router,
+    public pacienteService: PacienteService,
+    public ubicacionService: UbicacionService,
     public terapiaService: TerapiaService,
+    private router: Router,
   ) {
     this.form = this.formBuilder.group({
       dni: ['', Validators.required],
-      nombre: ['', Validators.required],
+      name: ['', Validators.required],
       apellido: ['', Validators.required],
       sexo: ['', Validators.required],
       telefono: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       provincia: ['', Validators.required],
@@ -41,29 +48,40 @@ import { TerapiaService } from 'src/app/services/terapia.service';
   }
  
   ngOnInit(): void {
+    //TerapiaService
     this.terapiaService.obtenerTerapias(); // Llama a la función para obtener las terapias
-
     this.terapiaService.getTerapias().subscribe(terapias => {
-      this.terapias = terapias; // Actualiza el arreglo de terapias cuando cambie
+    this.terapias = terapias;
+    });
+    // Actualiza el arreglo de terapias cuando cambie
+    //UbicacionService
+    this.ubicacionService.obtenerProvincias(); // Llama a la función para obtener las provincias
+    this.ubicacionService.obtenerLocalidades(); // Llama a la función para obtener las localidades
+    this.ubicacionService.getProvincias().subscribe(provincias => {
+    this.provincias = provincias; // Actualiza el arreglo de provincias cuando cambie
+    });
+    this.ubicacionService.getLocalidades().subscribe(localidades => {
+      this.localidades = localidades; // Actualiza el arreglo de localidades cuando cambie
     });
   }
 
+  //Al enviar el formulario de registro del paciente
   
   onSubmit(): void {
     const user: Paciente = {
-      username: this.form.value.nombre + this.form.value.apellido,
+      username: this.form.value.name + this.form.value.lastname,
       email: this.form.value.email,
       password: this.form.value.password,
       dni: this.form.value.dni,
-      nombre: this.form.value.nombre,
-      apellido: this.form.value.apellido,
-      sexo: this.form.value.sexo === 'Femenino' ? 'F' : (this.form.value.sexo === 'Masculino' ? 'M' : ''),
+      name: this.form.value.name,
+      lastname: this.form.value.lastname,
+      sexo: this.form.value.sexo,
       telefono: this.form.value.telefono,
       terapiapaciente: this.form.value.terapiapaciente,
       provincia: this.form.value.provincia,
       localidad: this.form.value.localidad,
     };
-console.log('subit', user)
+    console.log('Formulario', this.form.value)
     this.pacienteService.createPaciente(user).subscribe(
       response => {
         console.log('Registro exitoso', response);
@@ -83,12 +101,12 @@ console.log('subit', user)
     return this.form.get('dni');
   }
 
-  get nombre() {
-    return this.form.get('nombre');
+  get name() {
+    return this.form.get('name');
   }
 
-  get apellido() {
-    return this.form.get('apellido');
+  get lastname() {
+    return this.form.get('lastname');
   }
 
   get sexo() {

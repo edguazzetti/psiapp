@@ -14,9 +14,9 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
       <div class="form-group">
         <label for="nombre">Nombre</label>
-        <input type="text" class="form-control" id="nombre" formControlName="nombre" [class.border-danger]="nombre?.invalid && nombre?.touched" />
-        <div *ngIf="nombre?.invalid && nombre?.touched">
-          <p *ngIf="nombre?.hasError('required')" class="text-danger">
+        <input type="text" class="form-control" id="name" formControlName="name" [class.border-danger]="name?.invalid && name?.touched" />
+        <div *ngIf="name?.invalid && name?.touched">
+          <p *ngIf="name?.hasError('required')" class="text-danger">
             El nombre es requerido.
           </p>
         </div>
@@ -24,9 +24,9 @@
 
       <div class="form-group">
         <label for="apellido">Apellido</label>
-        <input type="text" class="form-control" id="apellido" formControlName="apellido" [class.border-danger]="apellido?.invalid && apellido?.touched" />
-        <div *ngIf="apellido?.invalid && apellido?.touched">
-          <p *ngIf="apellido?.hasError('required')" class="text-danger">
+        <input type="text" class="form-control" id="lastname" formControlName="lastname" [class.border-danger]="lastname?.invalid && lastname?.touched" />
+        <div *ngIf="lastname?.invalid && lastname?.touched">
+          <p *ngIf="lastname?.hasError('required')" class="text-danger">
             El apellido es requerido.
           </p>
         </div>
@@ -46,8 +46,8 @@
         <label for="sexo">Sexo</label>
         <select class="form-control" id="sexo" formControlName="sexo" [class.border-danger]="sexo?.invalid && sexo?.touched">
           <option value="" disabled selected>Seleccione el sexo</option>
-          <option value="Femenino">Femenino</option>
-          <option value="Masculino">Masculino</option>
+          <option value="fmenino">Femenino</option>
+          <option value="masculino">Masculino</option>
         </select>
         <div *ngIf="sexo?.invalid && sexo?.touched">
           <p *ngIf="sexo?.hasError('required')" class="text-danger">
@@ -70,6 +70,30 @@
       </div>
       <div class="form-group">
         <label for="provincia">Provincia</label>
+        <select class="form-control" id="provincia" formControlName="provincia" [class.border-danger]="provincia?.invalid && provincia?.touched">
+          <option value="" disabled selected>Seleccione una provincia</option>
+          <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.provincia }}</option>
+        </select>
+        <div *ngIf="provincia?.invalid && provincia?.touched">
+          <p *ngIf="provincia?.hasError('required')" class="text-danger">
+            El campo tipo de provincia es requerido.
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="provincia">Localidad</label>
+        <select class="form-control" id="localidad" formControlName="localidad" [class.border-danger]="localidad?.invalid && localidad?.touched">
+          <option value="" disabled selected>Seleccione una localidad</option>
+          <option *ngFor="let localidad of localidades" [value]="localidad.id">{{ localidad.localidad }}</option>
+        </select>
+        <div *ngIf="localidad?.invalid && localidad?.touched">
+          <p *ngIf="localidad?.hasError('required')" class="text-danger">
+            El campo tipo de localidad es requerido.
+          </p>
+        </div>
+      </div>
+      <!-- <div class="form-group">
+        <label for="provincia">Provincia</label>
         <input type="text" class="form-control" id="provincia" formControlName="provincia" [class.border-danger]="provincia?.invalid && provincia?.touched" />
         <div *ngIf="provincia?.invalid && provincia?.touched">
           <p *ngIf="provincia?.hasError('required')" class="text-danger">
@@ -86,7 +110,7 @@
             La localidad es requerida.
           </p>
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group">
         <label for="telefono">Teléfono</label>
@@ -122,7 +146,7 @@
       </div>
 
       <div class="container" style="text-align: center">
-        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        <button type="submit" class="btn btn-primary">
           Registrarse
         </button>
       </div>

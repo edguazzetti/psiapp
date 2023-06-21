@@ -2,11 +2,11 @@ export interface Paciente {
     username?:string;
     id?: number;
     dni: number;
-    nombre: string;
-    apellido: string;
+    name: string;
+    lastname: string;
     sexo: string;
     telefono: number;
-    terapiapaciente?: number;
+    terapiapaciente?: string;
     email: string; 
     password: string;
     provincia: number;

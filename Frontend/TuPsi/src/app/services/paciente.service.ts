@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Paciente } from '../models/paciente.model';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class PacienteService {
-  private signUpUrl = 'http://127.0.0.1:8000/api/sign/paciente/';
+  private signUpUrl = 'http://127.0.0.1:8000/api/accounts/paciente/create/';
  
 
   constructor(private http: HttpClient) {
@@ -15,26 +16,27 @@ export class PacienteService {
   }
 
   createPaciente(paciente: Paciente): Observable<Paciente> {
+    console.log('paciente',paciente)
     return this.http.post<Paciente>(this.signUpUrl, paciente);
   }
 
   getPaciente(id: number): Observable<Paciente> {
-    const url = `http://127.0.0.1:8000/admin/pacientes/${id}/`;
+    const url = `http://127.0.0.1:8000/api/accounts/paciente/${id}/`;
     return this.http.get<Paciente>(url);
   }
 
   getAllPacientes(): Observable<Paciente[]> {
-    const url = 'http://127.0.0.1:8000/api/pacientes/';
+    const url = 'http://127.0.0.1:8000/api/accounts/paciente/';
     return this.http.get<Paciente[]>(url);
   }
 
   updatePaciente(paciente: Paciente): Observable<Paciente> {
-    const url = `http://127.0.0.1:8000/api/pacientes/${paciente.id}/`;
+    const url = ``;
     return this.http.put<Paciente>(url, paciente);
   }
 
   deletePaciente(id: number): Observable<Paciente> {
-    const url = `http://127.0.0.1:8000/api/pacientes/${id}/`;
+    const url = `/${id}/`;
     return this.http.delete<Paciente>(url);
   }
 

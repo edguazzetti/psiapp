@@ -14,6 +14,7 @@ import { JwtInterceptor } from './services/interceptor';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { LoginService } from './services/login.service';
 import { TerapiaService } from './services/terapia.service';
+import { UbicacionService } from './services/ubicacion.service';
 
 
 
@@ -31,7 +32,7 @@ import { TerapiaService } from './services/terapia.service';
     HttpClientModule,
     PagesModule,
   ],
-  providers: [PacienteService,LoginService, TerapiaService,
+  providers: [PacienteService,LoginService, TerapiaService, UbicacionService,
   {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true},
   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true},
   ],

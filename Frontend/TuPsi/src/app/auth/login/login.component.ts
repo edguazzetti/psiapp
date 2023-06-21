@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit {
     const password = this.form.controls['password'].value;
     this.loginService.login(email,password).subscribe(
       data => {
-        // console.log('Login successful:', data)
-        // Redirige al usuario a la página principal después del inicio de sesión exitoso
+       
         this.router.navigate(['/miPerfil']);
       },
       error => {
@@ -65,6 +64,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  
 }
 
 

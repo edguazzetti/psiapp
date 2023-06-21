@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+
 
 @Component({
   selector: 'app-nav',
@@ -7,7 +9,10 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    ) {}
 
   get isAuthenticated(): boolean {
     let authStatus = false;
@@ -16,9 +21,7 @@ export class NavComponent {
     });
     return authStatus;
   }
-  // get isAuthenticated(): boolean {
-  //   return this.loginService.estaAutenticado.getValue();
-  // }
+
   
   get username(): string {
     // Obtiene el nombre de usuario autenticado
@@ -32,18 +35,9 @@ export class NavComponent {
     return userName;
   }
   
-  
-  
-
-  // get username(): string {
-  //   // Obtiene el nombre de usuario autenticado
-  //   console.log(this.username)
-  //   return this.loginService.usuarioAutenticado.nombre;
-   
-  // }
-
   logout() {
     // Llama al método logout del servicio de login para cerrar la sesión
     this.loginService.logout();
+    this.router.navigate(['']);
   }
 }

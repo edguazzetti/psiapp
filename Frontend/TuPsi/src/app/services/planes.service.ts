@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PlanesService {
-  apiURL: string = 'http://localhost:3000/planes';
+  apiURL: string = 'http://127.0.0.1:8000/api/accounts/planes/';
   private planCreadoSubject: Subject<Plan> = new Subject<Plan>();
 
   constructor(private http: HttpClient) {}

@@ -7,7 +7,7 @@ import { map, tap, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
-  url = "http://127.0.0.1:8000/api/login/";
+  url = "http://127.0.0.1:8000/api/accounts/login/";
   currentUserSubject: BehaviorSubject<any>;
   currentUser: Observable<any>;
   private _estaAutenticado = new BehaviorSubject<boolean>(false);
@@ -63,6 +63,7 @@ export class LoginService {
     localStorage.removeItem('username');
     this.currentUserSubject.next({});
     this._estaAutenticado.next(false); // Actualiza el valor de _estaAutenticado
+    
   }
 
   get usuarioAutenticado(): any {

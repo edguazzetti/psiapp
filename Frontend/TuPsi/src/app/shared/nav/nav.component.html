@@ -23,9 +23,9 @@
         <li class="nav-item">
           <a class="nav-link active" routerLink="/search"><i class="fas fa-search"></i>Buscar</a>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link active" routerLink="/signProfesional"><i class="fas fa-user"></i>Registro Profesional</a>
-        </li> -->
+        </li>
         <li class="nav-item">
           <a class="nav-link active" routerLink="/signPaciente"><i class="fas fa-user"></i>Registro Pacientes</a>
         </li>
@@ -52,7 +52,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" style="cursor: pointer;" *ngIf="isAuthenticated" (click)="logout()">
+          <a class="nav-link active" style="cursor: pointer;" *ngIf="isAuthenticated" (click)="logout()  ">
             <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
           </a>
           <a class="nav-link active" *ngIf="!isAuthenticated" routerLink="/login">
