@@ -1,0 +1,36 @@
+from django.urls import path
+from .views import (
+    CreateUserView,
+    LoginView,
+    PacienteCreateView,
+    ProfesionalCreateView,
+    AdminPacientesView,
+    AdminProfesionalesView,
+    AdminPlanesView,
+    AdminTerapiasView,
+    BuscarProfesionalView,
+    PacienteDetailView,
+    ProfesionalDetailView,
+    TerapiasView,
+    ProvinciasView,
+    LocalidadesView,
+    PlanListView,
+)
+
+urlpatterns = [
+    path('register/', CreateUserView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('paciente/create/', PacienteCreateView.as_view(), name='create-paciente'),
+    path('profesional/create/', ProfesionalCreateView.as_view(), name='create-profesional'),
+    path('adminpacientes/', AdminPacientesView.as_view(), name='admin-pacientes'),
+    path('adminprofesionales/', AdminProfesionalesView.as_view(), name='admin-profesionales'),
+    path('adminplanes/', AdminPlanesView.as_view(), name='admin-planes'),
+    path('adminterapias/', AdminTerapiasView.as_view(), name='admin-terapias'),
+    path('buscar-profesional/', BuscarProfesionalView.as_view(), name='buscar-profesional'),
+    path('paciente/', PacienteDetailView.as_view(), name='detalle-paciente'),
+    path('profesional/', ProfesionalDetailView.as_view(), name='detalle-profesional'),
+    path('terapias/', TerapiasView.as_view(), name='terapias'),
+    path('provincias/', ProvinciasView.as_view(), name='provincias'),
+    path('localidades/', LocalidadesView.as_view(), name='localidades'),
+    path('planes/', PlanListView.as_view(), name='planes'),
+]
