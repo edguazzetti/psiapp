@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'core',
     "rest_framework",
     'rest_framework.authtoken',
     "corsheaders",
@@ -88,7 +89,6 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'basededatos',
         'NAME': 'basededatos',
         'USER': 'root',
         'PASSWORD': '',
