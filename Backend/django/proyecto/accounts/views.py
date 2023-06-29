@@ -20,18 +20,21 @@ class CreateUserView(generics.CreateAPIView):
 
 class LoginView(ObtainAuthToken):
     serializer_class = AuthTokenSerializer
-
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         token, created = Token.objects.get_or_create(user=user)
+
+        is_superuser = user.is_superuser  # Agregar esta línea para obtener el estado de superusuario
+
         return Response({
             'token': token.key,
             'username': user.username,
             'user_id': user.id,
             'email': user.email,
-            'name': user.name
+            'name': user.name,
+            'is_superuser': is_superuser  # Agregar la información del superusuario a la respuesta
         })
 
 

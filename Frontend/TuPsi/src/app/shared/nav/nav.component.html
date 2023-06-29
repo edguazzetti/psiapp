@@ -33,14 +33,13 @@
           <a class="nav-link active" routerLink="/planes"><i class="far fa-credit-card"></i>Planes</a>
         </li>
         <div class="btn-group">
-          <button type="button" class="btn btn-success dropdown-toggle" style="border-radius: 20%; color: white; font-weight: 800;" data-bs-toggle="dropdown" aria-expanded="false">
+          <button *ngIf="isSuperuser" type="button" class="btn btn-success dropdown-toggle" style="border-radius: 20%; color: white; font-weight: 800;" data-bs-toggle="dropdown" aria-expanded="false">
             Administrar
           </button>
-          <ul class="dropdown-menu">
+          <ul *ngIf="isSuperuser" class="dropdown-menu">
             <li><a class="dropdown-item" routerLink="/AdminPacientes">Administrar Pacientes</a></li>
             <li><a class="dropdown-item" routerLink="/AdminProfesionales">Administrar Profesionales</a></li>
-            <li><a class="dropdown-item"routerLink="/AdminPlanes">Administrar Planes</a></li>
-    
+            <li><a class="dropdown-item" routerLink="/AdminPlanes">Administrar Planes</a></li>
           </ul>
         </div>
       </ul>

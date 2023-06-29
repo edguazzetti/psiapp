@@ -9,10 +9,20 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+  isSuperuser = false;
   constructor(
     private loginService: LoginService,
     private router: Router,
+    
     ) {}
+  
+    ngOnInit() {
+      this.loginService.currentUser.subscribe((user: any) => {
+        if (user) {
+          this.isSuperuser = user.is_superuser; // Almacena el estado de superusuario
+        }
+      });
+    }
 
   get isAuthenticated(): boolean {
     let authStatus = false;

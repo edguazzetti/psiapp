@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,6 @@ export class LoginService {
   private _estaAutenticado = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
-    
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -21,20 +20,17 @@ export class LoginService {
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.url, { email, password }, { observe: 'response' })
       .pipe(
-        
         map(response => {
-          const headers = response.headers; // Get the response headers
-          const data = response.body; // Get the response body data
-          if (data && data.username) {
-           
+          const headers = response.headers;
+          const data = response.body;
+          if (data && data.token) {
             localStorage.setItem('currentUser', JSON.stringify(data));
             localStorage.setItem('token', this.getCookieValue(headers, 'csrftoken') || '');
             localStorage.setItem('username', data.username);
-            
             this.currentUserSubject.next(data);
             this._estaAutenticado.next(true);
+            this.logUserRoles(data.is_superuser); // Agregar la llamada a la función logUserRoles con la propiedad is_superuser
           }
-    
           return data;
         }),
         catchError(error => {
@@ -55,15 +51,21 @@ export class LoginService {
   
     return null;
   }
-
   
+  private logUserRoles(isSuperuser: boolean): void {
+    if (isSuperuser) {
+      console.log('El usuario es superusuario.');
+    } else {
+      console.log('El usuario no es superusuario.');
+    }
+  }
+
   logout(): void {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     this.currentUserSubject.next({});
-    this._estaAutenticado.next(false); // Actualiza el valor de _estaAutenticado
-    
+    this._estaAutenticado.next(false);
   }
 
   get usuarioAutenticado(): any {
